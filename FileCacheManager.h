@@ -5,7 +5,7 @@
 #ifndef ADVANCED1_HW4__FILECACHEMANAGER_H_
 #define ADVANCED1_HW4__FILECACHEMANAGER_H_
 #include "CacheManager.h"
-class FileCacheManager: public CacheManager{
+class FileCacheManager : public CacheManager {
 
 };
 

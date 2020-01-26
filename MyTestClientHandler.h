@@ -7,8 +7,8 @@
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
-template <class Problem, class Solution>
-class MyTestClientHandler: public ClientHandler {
+template<class Problem, class Solution>
+class MyTestClientHandler : public ClientHandler {
  private:
 	Solver<Problem, Solution> s;
 	CacheManager<Problem, Solution> cm;

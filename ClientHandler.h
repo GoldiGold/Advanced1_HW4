@@ -8,7 +8,7 @@
 #include <ostream>
 #include <istream>
 
-class ClientHandler{
+class ClientHandler {
  public:
 	int handleCLient(int socketfd);
 };

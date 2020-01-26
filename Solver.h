@@ -4,8 +4,8 @@
 
 #ifndef ADVANCED1_HW4__SOLVER_H_
 #define ADVANCED1_HW4__SOLVER_H_
-template <class Problem, class Solution>
-class Solver{
+template<class Problem, class Solution>
+class Solver {
  public:
 	Solution solve(Problem p);
 };
