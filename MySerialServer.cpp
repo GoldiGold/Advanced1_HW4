@@ -5,7 +5,7 @@
 #include "MySerialServer.h"
 
 MySerialServer::MySerialServer() {
-	this->clients_queue = new std::queue<int>;
+//	this->clients_queue = new std::queue<int>;
 }
 int MySerialServer::open(int port, ClientHandler *c) {
 	this->sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -35,26 +35,34 @@ int MySerialServer::open(int port, ClientHandler *c) {
 	std::cout << "about to accept shit..." << std::endl;
 	setsockopt(this->sockfd, SOL_SOCKET, SO_RCVTIMEO, (const char *) &tv, sizeof(tv));
 
+	/* TODO: THERE IS NO NEED FOR A QUEUE OF CLIENTS BECAUSE THE ACCEPT WILL ACCEPT ONLY AFTER FINISHING DEALING WITH THE PREVIOUS
+	 * TODO: CLIENT WE GOT THROUGH THE ACCEPT
+	 *
+	 * TODO: NEED TO FIND WHERE TO PUT THE STOP - HOW TO KNOW IF NO CLIENT WANTS TO JOIN.
+	 */
 	while (true) {
 		std::cout << "here we go accepting" << std::endl;
 		if ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) < 0) {
 			std::cout << "SHIT" << std::endl;
 			std::cerr << "accept error" << std::endl;
+			this->stop();
 			exit(EXIT_FAILURE);
 		} else {
 			std::cout << "for some reason ot thinks we accepted a client" << std::endl;
-			this->clients_queue->push(new_socket);
+//			this->clients_queue->push(new_socket);
 		}
 
 		std::cout << "point 1" << std::endl;
-		std::thread clientHandler(&ClientHandler::handleClient, c, this->clients_queue->front());
+		std::thread clientHandler(&ClientHandler::handleClient, c, new_socket);
 		std::cout << "point 2" << std::endl;
 		clientHandler.join();
 		std::cout << "point 3" << std::endl;
-		close(this->clients_queue->front());
+//		close(this->clients_queue->front());
 		std::cout << "point 4" << std::endl;
-		this->clients_queue->pop();
-		this->stop();
+//		this->clients_queue->pop();
+//		if (this->clients_queue->empty()){
+//			this->stop();
+//		}
 		return 1;
 	}
 ////	TODO: CHECK IF YOU NEED TO OPEN A THREAD FOR SOMETHING, IF YES THEN FOR WHAT' AND WHAT DO YOU DO WITH THE

@@ -10,7 +10,7 @@
 
 class MySerialServer : public Server {
  private:
-	std::queue<int> *clients_queue;
+//	std::queue<int> *clients_queue;
 	int sockfd; // lets make it so it will take only one client (anyway we need PARALLEL)
 
  public:
