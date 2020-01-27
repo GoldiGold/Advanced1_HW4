@@ -2,8 +2,8 @@
 // Created by yoavst22 on 23/01/2020.
 //
 
-#ifndef ADVANCED1_HW3__MATRIXPROBLEM_H_
-#define ADVANCED1_HW3__MATRIXPROBLEM_H_
+#ifndef ADVANCED1_HW4__MATRIXPROBLEM_H_
+#define ADVANCED1_HW4__MATRIXPROBLEM_H_
 #include "Searchable.h"
 #include <utility>
 #include <vector>
@@ -22,4 +22,4 @@ class MatrixProblem: public Searchable{
   std::list<State*>* GetPossibleStates(State* s) override;
 
 };
-#endif //ADVANCED1_HW3__MATRIXPROBLEM_H_
+#endif //ADVANCED1_HW4__MATRIXPROBLEM_H_

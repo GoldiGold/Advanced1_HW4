@@ -2,19 +2,22 @@
 // Created by yoavst22 on 23/01/2020.
 //
 
-#ifndef ADVANCED1_HW3__BESTFIRSTSEARCH_H_
-#define ADVANCED1_HW3__BESTFIRSTSEARCH_H_
+#ifndef ADVANCED1_HW4__BESTFIRSTSEARCH_H_
+#define ADVANCED1_HW4__BESTFIRSTSEARCH_H_
 
 #include "State.h"
 #include "Searchable.h"
 #include "Searcher.h"
 #include "MyPriorityQueue.h"
-//#include <hash_set>
+#include <unordered_map>
 class BestFirstSearch: public Searcher{
-  MyPriorityQueue openList;
+  MyPriorityQueue* openList;
+  std::unordered_map<std::string, State*>* closed;
 
-  std::list<char>* path(State<std::pair<int,int>>* s);
+  std::list<char>* path(State* s);
  public:
-  std::list<char> search(Searchable<std::pair<int,int>>* searchable);
+  BestFirstSearch();
+  ~BestFirstSearch(){delete openList;}
+  std::list<char>* solve(Searchable* searchable) override ;
 };
-#endif //ADVANCED1_HW3__BESTFIRSTSEARCH_H_
+#endif //ADVANCED1_HW4__BESTFIRSTSEARCH_H_

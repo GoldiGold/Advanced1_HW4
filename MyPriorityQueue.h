@@ -16,8 +16,9 @@ class MyPriorityQueue{
   }
   ~MyPriorityQueue(){delete q;}
   int length() {return q->size();}
-  void push(State* s){
-    q->push(s);
+  void push(State* s){q->push(s);}
+  bool contains(State* s){
+    return true;
   }
   State* pop(){
     auto tmp = q->top();

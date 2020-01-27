@@ -11,3 +11,13 @@ void State::print(){
     std::cout<<"("<<cameFrom->GetX()<<","<<cameFrom->GetY()<<")\n";
   }
 }
+
+std::string State::toString(){
+  using namespace std;
+  string str = "(";
+  str += to_string(x);
+  str += ",";
+  str += to_string(y);
+  str += ")";
+  return str;
+}

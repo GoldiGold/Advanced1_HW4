@@ -3,25 +3,33 @@
 //
 
 #include "BestFirstSearch.h"
-std::list<char>* BestFirstSearch::path(State<std::pair<int,int>>* s){
+
+BestFirstSearch::BestFirstSearch() {
+  this->openList = new MyPriorityQueue();
+  closed = new std::unordered_map<std::string, State*>();
+}
+
+
+std::list<char>* BestFirstSearch::path(State* s){
   using namespace std;
   auto l = new list<char>();
   auto cf = s->GetCameFrom();
-  auto sState = s->GetState();
+  auto x = s->GetX();
+  auto y = s->GetY();
   while (cf != nullptr) {
-    auto cfState = cf->GetState();
-    if(cfState->first == sState->first-1) {
+    auto cfx = cf->GetX();
+    auto cfy = cf->GetY();
+    if(cfx == x-1) {
       l->push_front('r');
-    } else if(cfState->first == sState->first+1) {
+    } else if(cfx == x+1) {
       l->push_front('l');
-    } else if(cfState->second == sState->second-1) {
+    } else if(cfy == y-1) {
       l->push_front('d');
-    } else if(cfState->second == sState->second+1) {
+    } else if(cfy == y+1) {
       l->push_front('u');
     } else {
       throw "invalid step";
     }
-    auto sState = cf->GetState();
     cf = cf->GetCameFrom();
   }
   return l;
@@ -30,16 +38,22 @@ std::list<char>* BestFirstSearch::path(State<std::pair<int,int>>* s){
 
 
 
-std::list<char> BestFirstSearch::search(Searchable<std::pair<int,int>>* searchable){
-//  using namespace std;
-//  openList->push(searchable->GetInitState());
-//  auto closed = new __gnu_cxx::hash_set<State<pair<int,int>>*>();
-//  while(openList->size() > 0){
-//    State<std::pair<int,int>>* n = openList->top();
-//    openList->pop();
-//    closed->insert(n);
-//    if(n == searchable->GetGoalState()){
-//      return path(n);
-//    }
-//  }
+std::list<char>* BestFirstSearch::solve(Searchable* searchable){
+  using namespace std;
+  openList->push(searchable->GetInitState());
+
+  while(openList->length()> 0){
+    State* n = openList->pop();
+    closed->insert(std::pair<string, State*>(n->toString(), n));
+    if(n == searchable->GetGoalState()){
+      return path(n);
+    }
+    list<State*>* succ = searchable->GetPossibleStates(n);
+    for(State* s: *succ){
+      auto str = s->toString();
+      if(closed->find(str) == closed->end()){
+
+      }
+    }
+  }
 }
