@@ -18,7 +18,7 @@ class MatrixProblem: public Searchable{
  public:
   MatrixProblem(std::vector<std::vector<int>>* m, int xi, int yi, int xg, int yg);
   State* GetInitState() override{ return init;}
-  State* GetGoalState() override{ return goal;}
+  bool isGoalState(State* s) override { return (*goal == s);}
   std::list<State*>* GetPossibleStates(State* s) override;
 
 };

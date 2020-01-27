@@ -22,7 +22,7 @@ std::list<State*>* MatrixProblem::GetPossibleStates(State* s){
     s1->SetCost(s->GetCost() + matrix->at(x-1).at(y));
     l->push_back(s1);
   }
-  if (x < matrix->at(0).size()-1) {
+  if (x < matrix->size()-1) {
     auto s1 = new State(x + 1, y);
     s1->SetCameFrom(s);
     s1->SetCost(s->GetCost() + matrix->at(x+1).at(y));

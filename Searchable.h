@@ -10,7 +10,7 @@ class Searchable {
  public:
   virtual ~Searchable()= default;
   virtual State* GetInitState() = 0;
-  virtual State* GetGoalState() = 0;
+  virtual bool isGoalState(State* s) = 0;
   virtual std::list<State*>* GetPossibleStates(State* s) = 0;
 };
 #endif //ADVANCED1_HW4__SEARCHABLE_H_

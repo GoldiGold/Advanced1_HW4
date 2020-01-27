@@ -13,11 +13,13 @@
 class BestFirstSearch: public Searcher{
   MyPriorityQueue* openList;
   std::unordered_map<std::string, State*>* closed;
+  int cost;
 
   std::list<char>* path(State* s);
  public:
   BestFirstSearch();
   ~BestFirstSearch(){delete openList;}
   std::list<char>* solve(Searchable* searchable) override ;
+  int GetCost() const {return cost;}
 };
 #endif //ADVANCED1_HW4__BESTFIRSTSEARCH_H_
