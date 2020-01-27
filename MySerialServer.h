@@ -5,7 +5,7 @@
 #ifndef ADVANCED1_HW4__MYSERIALSERVER_H_
 #define ADVANCED1_HW4__MYSERIALSERVER_H_
 #include "Server.h"
-
+#include <thread>
 #include <queue>
 
 class MySerialServer : public Server {
@@ -13,8 +13,9 @@ class MySerialServer : public Server {
 	std::queue<int> *clients_queue;
 	int sockfd; // lets make it so it will take only one client (anyway we need PARALLEL)
 
-
-	int open(int port, ClientHandler c) override ;
+ public:
+	MySerialServer();
+	int open(int port, ClientHandler* c) override ;
 	int stop() override ;
 };
 

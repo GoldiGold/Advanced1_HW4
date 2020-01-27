@@ -7,11 +7,50 @@
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
+#include <string>
+#include <sstream>
+#define BUFFER_SIZE 1024
+
+std::vector<std::string> split(const std::string &s, char delimiter) {
+	std::vector<std::string> tokens;
+	std::string token;
+	std::istringstream tokenStream(s);
+	while (std::getline(tokenStream, token, delimiter)) {
+		tokens.push_back(token);
+	}
+	return tokens;
+}
+
 template<class Problem, class Solution>
 class MyTestClientHandler : public ClientHandler {
  private:
-	Solver<Problem, Solution> s;
-	CacheManager<Problem, Solution> cm;
+//	Solver<Problem, Solution> s;
+//	CacheManager<Problem, Solution> cm;
+
+ public:
+//	MyTestClientHandler(){
+//
+//	}
+	int handleClient(int sockfd) override {
+		char buffer[BUFFER_SIZE];
+		std::vector<std::string> sub_n;
+		std::string t;
+		int counter = 0;
+		int i = 0;
+		do {
+			ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
+			t = buffer;
+			std::cout << buffer << std::endl;
+			if(t.find('\n') != std::string::npos ){
+				++counter;
+			}
+			++i;
+//			sub_n = split(t, "\n");
+		} while (t.find("end") == std::string::npos);
+		std::cout << "the amount of lines is: " << counter << std::endl;
+
+		return 1;
+	}
 
 };
 

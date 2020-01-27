@@ -13,4 +13,15 @@ add_executable(Advanced1_HW4
         FileCacheManager.h
         CacheManager.h
         MySerialServer.h
-        MySerialServer.cpp)
+        MySerialServer.cpp
+        BestFirstSearch.h
+        BestFirstSearch.cpp
+        MatrixProblem.h
+        MatrixProblem.cpp
+        MyCmp.h
+        MyPriorityQueue.h
+        MyPriorityQueue.cpp
+        Searchable.h
+        Searcher.h
+        State.h
+        State.cpp)
