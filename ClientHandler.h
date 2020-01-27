@@ -4,12 +4,8 @@
 
 #ifndef ADVANCED1_HW4__CLIENTHANDLER_H_
 #define ADVANCED1_HW4__CLIENTHANDLER_H_
-
-#include <ostream>
-#include <istream>
-
 class ClientHandler {
  public:
-	int handleCLient(int socketfd);
+	virtual int handleCLient(int socketfd);
 };
 #endif //ADVANCED1_HW4__CLIENTHANDLER_H_

@@ -5,7 +5,8 @@
 #ifndef ADVANCED1_HW4__MYSERIALSERVER_H_
 #define ADVANCED1_HW4__MYSERIALSERVER_H_
 #include "Server.h"
-#include <queue>
+
+//#include <queue>
 
 class MySerialServer: public Server {
  private:
@@ -13,6 +14,8 @@ class MySerialServer: public Server {
 	int sockfd; // lets make it so it will take only one client (anyway we need PARALLEL)
 
 
+	int open(int port, ClientHandler c) override ;
+	virtual int stop () override ;
 };
 
 #endif //ADVANCED1_HW4__MYSERIALSERVER_H_

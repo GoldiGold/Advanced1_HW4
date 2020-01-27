@@ -8,9 +8,9 @@
 template<class Problem, class Solution>
 class CacheManager {
  public:
-	Solution get_solution(Problem p);
-	void insert(Problem p, Solution s);
-	bool is_exist(Problem p);
+	virtual Solution get_solution(Problem p);
+	virtual void insert(Problem p, Solution s);
+	virtual bool is_exist(Problem p);
 };
 
 
