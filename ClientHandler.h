@@ -6,6 +6,6 @@
 #define ADVANCED1_HW4__CLIENTHANDLER_H_
 class ClientHandler {
  public:
-	virtual int handleCLient(int socketfd);
+	virtual int handleCLient(int sockfd) = 0;
 };
 #endif //ADVANCED1_HW4__CLIENTHANDLER_H_

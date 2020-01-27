@@ -14,7 +14,7 @@
 
 class Server {
  public:
-	virtual int open(int port, ClientHandler c); // will return positive if succeeded
-	virtual int stop();
+	virtual int open(int port, ClientHandler c) = 0; // will return positive if succeeded
+	virtual int stop() = 0;
 };
 #endif //ADVANCED1_HW4__SERVER_H_

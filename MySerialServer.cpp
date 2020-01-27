@@ -28,6 +28,8 @@ int MySerialServer::open(int port, ClientHandler c) {
 	if ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) < 0) {
 		std::cerr << "accept error" << std::endl;
 		exit(EXIT_FAILURE);
+	} else {
+		this->clients_queue.push(new_socket);
 	}
 ////	TODO: CHECK IF YOU NEED TO OPEN A THREAD FOR SOMETHING, IF YES THEN FOR WHAT' AND WHAT DO YOU DO WITH THE
 //// 	TODO: CLIENT_HANDLER IN THIS FUNCTION. in the end need to close the client's new socket.

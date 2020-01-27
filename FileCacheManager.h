@@ -10,14 +10,10 @@
 template<class Problem, class Solution>
 class FileCacheManager : public CacheManager<Problem, Solution> {
 
-	std::unordered_map<Problem, std::pair<Solution, typename std::list<Problem>::iterator> > *cache;
-	std::list<Problem> *lru_list;
-	int capacity;
+	std::unordered_map<Problem, std::string> *cache;
 
-	FileCacheManager(int capacity) {
-		this->cache = new std::unordered_map<Problem, std::pair<Solution, typename std::list<Problem>::iterator> >;
-		this->lru_list = new std::list<Problem>;
-		this->capacity = capacity;
+	FileCacheManager() {
+		this->cache = new std::unordered_map<Problem, std::string>;
 	}
 	Solution get_solution(Problem p) override {
 
