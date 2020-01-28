@@ -1,43 +1,17 @@
 //
-// Created by yoavst22 on 23/01/2020.
+// Created by yoavst22 on 28/01/2020.
 //
 
-#ifndef ADVANCED1_HW4__BESTFIRSTSEARCH_H_
-#define ADVANCED1_HW4__BESTFIRSTSEARCH_H_
+#include "BreadthFirstSearch.h"
 
-#include "State.h"
-#include "Searchable.h"
-#include "Searcher.h"
-#include "MyPriorityQueue.h"
-#include <unordered_map>
-#include "CostCmp.h"
-template<class CMP>
-class BestFirstSearch: public Searcher{
-  MyPriorityQueue<CMP>* openList;
-  std::unordered_map<std::string, State*>* closed;
-  int cost;
-
-  std::list<char>* path(State* s);
- public:
-  BestFirstSearch();
-  ~BestFirstSearch(){delete openList;}
-  std::list<char>* solve(Searchable* searchable) override;
-  int GetCost() const {return cost;}
-  int numberOfClosedNodes(){
-    return closed->size();
-  }
-
-};
-
-template<class CMP>
-BestFirstSearch<CMP>::BestFirstSearch() {
-  this->openList = new MyPriorityQueue<CMP>();
+BreadthFirstSearch::BreadthFirstSearch() {
+  this->openList = new MyQueue();
   closed = new std::unordered_map<std::string, State*>();
   cost = 0;
 }
 
-template<class CMP>
-std::list<char>* BestFirstSearch<CMP>::path(State* s){
+
+std::list<char>* BreadthFirstSearch::path(State* s){
   using namespace std;
   cost = s->GetCost();
   auto l = new list<char>();
@@ -46,8 +20,8 @@ std::list<char>* BestFirstSearch<CMP>::path(State* s){
   auto x = stmp->GetX();
   auto y = stmp->GetY();
   while (cf != nullptr) {
-    auto x = stmp->GetX();
-    auto y = stmp->GetY();
+    x = stmp->GetX();
+    y = stmp->GetY();
     auto cfx = cf->GetX();
     auto cfy = cf->GetY();
     if(cfx == x-1) {
@@ -69,10 +43,9 @@ std::list<char>* BestFirstSearch<CMP>::path(State* s){
 
 
 
-template<class CMP>
-std::list<char>* BestFirstSearch<CMP>::solve(Searchable* searchable){
+std::list<char>* BreadthFirstSearch::solve(Searchable* searchable){
   using namespace std;
-  openList->setInit(searchable->GetInitState());
+
   openList->push(searchable->GetInitState());
 
   while(openList->length()> 0){
@@ -95,5 +68,3 @@ std::list<char>* BestFirstSearch<CMP>::solve(Searchable* searchable){
     }
   }
 }
-
-#endif //ADVANCED1_HW4__BESTFIRSTSEARCH_H_

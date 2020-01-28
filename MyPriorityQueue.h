@@ -9,13 +9,16 @@
 #include <queue>
 #include <unordered_map>
 #include <list>
+template<class CMP>
 class MyPriorityQueue{
-  std::priority_queue<State*, std::vector<State*>, MyCmp>* q;
+  std::priority_queue<State*, std::vector<State*>, CMP>* q;
   std::unordered_map<std::string, State*>* m;
+  CMP* cmp;
 
  public:
   MyPriorityQueue(){
-    q = new std::priority_queue<State*, std::vector<State*>, MyCmp>(MyCmp());
+    cmp = new CMP();
+    q = new std::priority_queue<State*, std::vector<State*>, CMP>(*cmp);
     m = new std::unordered_map<std::string, State*>();
   }
   ~MyPriorityQueue(){delete q;}
@@ -36,6 +39,30 @@ class MyPriorityQueue{
   State* get(std::string str){
     return m->at(str);
   }
+  void setInit(State* s){
+    cmp->setInit(s);
+  }
   void update(State* s);
 };
+
+
+
+template<class CMP>
+void MyPriorityQueue<CMP>::update(State* s){
+  (*m)[s->toString()] = s;
+  auto l = new std::list<State*>();
+  while (q->size()>0){
+    auto tmp = q->top();
+    if (*s == tmp){
+      l->push_front(s);
+    } else {
+      l->push_front(tmp);
+    }
+    q->pop();
+  }
+  while (l->size() > 0){
+    q->push(l->back());
+    l->pop_back();
+  }
+}
 #endif //ADVANCED1_HW4__MYPRIORITYQUEUE_H_
