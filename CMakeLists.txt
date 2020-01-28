@@ -7,7 +7,6 @@ add_executable(Advanced1_HW4
         main.cpp
         Server.h
         ClientHandler.h
-        Solver.h
         MyTestClientHandler.h
         FileCacheManager.h
         CacheManager.h
@@ -17,13 +16,11 @@ add_executable(Advanced1_HW4
         BestFirstSearch.cpp
         MatrixProblem.h
         MatrixProblem.cpp
-        MyCmp.h
-        MyPriorityQueue.h
-        MyPriorityQueue.cpp
         Searchable.h
         Searcher.h
         MyPriorityQueue.cpp
-        MyPriorityQueue.h MyCmp.h
+        MyPriorityQueue.h
+        MyCmp.h
         Solver.h
         CostCmp.h
         AStarCmp.h
