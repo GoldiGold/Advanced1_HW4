@@ -13,7 +13,7 @@ template<class Problem, class Solution>
 class FileCacheManager : public CacheManager<Problem, Solution> {
 
 //	std::unordered_map<Problem, std::string> *cache;
-
+ public:
 	Solution get_solution(Problem p) override {
 //		if(this->cache->find(p) != this->cache->end()){
 		std::ifstream solutionFile;

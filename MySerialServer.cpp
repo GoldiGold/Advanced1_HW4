@@ -41,7 +41,7 @@ int MySerialServer::open(int port, ClientHandler *c) {
 	}
 
 	struct timeval tv;
-	tv.tv_sec = 5; // TODO: change to 120 seconds
+	tv.tv_sec = 60; // TODO: change to 120 seconds
 	tv.tv_usec = 0;
 	setsockopt(this->sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *) &tv, sizeof(tv));
 	std::cout << "about to accept shit..." << std::endl;
@@ -52,22 +52,46 @@ int MySerialServer::open(int port, ClientHandler *c) {
 	 * TODO: NEED TO FIND WHERE TO PUT THE STOP - HOW TO KNOW IF NO CLIENT WANTS TO JOIN.
 	 */
 	std::cout << "here we go accepting" << std::endl;
-	std::thread seconds(printSeconds);
-	seconds.detach();
+//	std::thread seconds(printSeconds);
+//	seconds.detach();
 
 
 //	signal(SIGALRM, MySerialServer::closing_func);
 //	unsigned int secs = 5;
 //	alarm(secs);
 
-	while ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) != -1) {
-
-		std::cout << "we accepted a client" << std::endl;
-		std::cout << "handling client" << std::endl;
-		c->handleClient(new_socket);
-		std::cout << "FINISHED handling client" << std::endl;
-		std::cout << "closed socket" << std::endl;
+	bool ok = true;
+	while (ok) {
+		struct fd_set rfds;
+		struct timeval connection;
+		FD_ZERO(&rfds);
+		FD_SET(this->sockfd, &rfds);
+		connection.tv_sec = 60;
+		connection.tv_usec = 0;
+		int retval = select(1, &rfds, nullptr, nullptr, &connection);
+		switch(retval) {
+			case 0: //timeout
+				this->stop();
+			case -1: // error
+				ok = false;
+				break;
+			default: // can do accept on socket
+				new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
+				//goy stuff
+				c->handleClient(new_socket);
+				break;
+		}
 	}
+
+//	while ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) != -1) {
+
+//		std::cout << "we accepted a client" << std::endl;
+//		std::cout << "handling client" << std::endl;
+//		c->handleClient(new_socket);
+//		std::cout << "FINISHED handling client" << std::endl;
+//		std::cout << "closed socket" << std::endl;
+//
+//	}
 
 	std::cout << "SHIT" << std::endl;
 	std::cout << "didn't accept" << std::endl;

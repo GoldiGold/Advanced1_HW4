@@ -35,4 +35,4 @@ add_executable(Advanced1_HW4
         State.h
         State.cpp
         ShitSolver.cpp
-        ShitSolver.h)
+        ShitSolver.h MyClientHandler.cpp MyClientHandler.h)

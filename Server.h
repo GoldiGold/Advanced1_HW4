@@ -10,6 +10,8 @@
 #include <netinet/in.h>
 //#include <sstream>
 #include <iostream>
+#include <sys/select.h>
+#include <sys/time.h>
 
 
 class Server {
