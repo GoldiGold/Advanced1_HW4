@@ -2,6 +2,8 @@
 #include <sys/time.h>
 #include "MySerialServer.h"
 #include "MyTestClientHandler.h"
+#include "FileCacheManager.h"
+#include "ShitSolver.h"
 
 int main() {
 	std::cout << "Hello, World! VERSION 2.0" << std::endl;
@@ -24,6 +26,9 @@ int main() {
 //	std::cout << "time ended: " << tvAfter.tv_sec << " i is : " << i << std::endl;
 
 	auto my_serial_server = new MySerialServer();
-	my_serial_server->open(5600, new MyTestClientHandler<char, char>());
+	my_serial_server->open(12345,
+						   new MyTestClientHandler<std::string, std::string>(
+						   	      new ShitSolver(),
+																   new FileCacheManager<std::string, std::string>()));
 	return 0;
 }

@@ -14,13 +14,10 @@ class FileCacheManager : public CacheManager<Problem, Solution> {
 
 //	std::unordered_map<Problem, std::string> *cache;
 
-	FileCacheManager() {
-//		this->cache = new std::unordered_map<Problem, std::string>;
-	}
 	Solution get_solution(Problem p) override {
 //		if(this->cache->find(p) != this->cache->end()){
 		std::ifstream solutionFile;
-		solutionFile.open("../" + std::hash<Problem>(p) + ".txt", std::ios::binary);
+		solutionFile.open("../" + std::to_string(std::hash<Problem>()(p)) + ".txt");
 		if (!solutionFile) {
 			std::cerr << "the file wasn't able to open - it doesn't exist maybe" << std::endl;
 		}
@@ -31,7 +28,7 @@ class FileCacheManager : public CacheManager<Problem, Solution> {
 	}
 	void insert(Problem p, Solution s) override {
 		std::ofstream solutionFile;
-		solutionFile.open("../" + std::hash<Problem>(p) + ".txt", std::ios::binary | std::ios::trunc); // TODO: make sure you need trunc or if there is a different flag to use
+		solutionFile.open("../" + std::to_string(std::hash<Problem>()(p)) + ".txt", std::ios::trunc); // TODO: make sure you need trunc or if there is a different flag to use
 		if (!solutionFile) {
 			std::cerr << "the file wasn't able to open - it doesn't exist maybe" << std::endl;
 		}
@@ -41,10 +38,14 @@ class FileCacheManager : public CacheManager<Problem, Solution> {
 
 	bool is_exist(Problem p) override {
 		std::ifstream solutionFile;
-		solutionFile.open("../" + std::hash<Problem>(p) + ".txt", std::ios::binary);
+		solutionFile.open("../" + std::to_string(std::hash<Problem>()(p)) + ".txt");
 		return !(!solutionFile);
 	}
 
+// public:
+//	FileCacheManager() {
+////		this->cache = new std::unordered_map<Problem, std::string>;
+//	}
 };
 
 #endif //ADVANCED1_HW4__FILECACHEMANAGER_H_

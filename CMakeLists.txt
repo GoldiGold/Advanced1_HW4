@@ -24,4 +24,4 @@ add_executable(Advanced1_HW4
         Searchable.h
         Searcher.h
         State.h
-        State.cpp)
+        State.cpp ShitSolver.cpp ShitSolver.h)
