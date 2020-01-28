@@ -25,6 +25,17 @@ add_executable(Advanced1_HW4
         MyPriorityQueue.cpp
         MyPriorityQueue.h MyCmp.h
         Solver.h
-        CostCmp.h AStarCmp.h BreadthFirstSearch.cpp BreadthFirstSearch.h MyQueue.h MyQueue.cpp DepthFirstSearch.cpp DepthFirstSearch.h MyStack.h MyStack.cpp
+        CostCmp.h
+        AStarCmp.h
+        BreadthFirstSearch.cpp
+        BreadthFirstSearch.h
+        MyQueue.h
+        MyQueue.cpp
+        DepthFirstSearch.cpp
+        DepthFirstSearch.h
+        MyStack.h
+        MyStack.cpp
         State.h
-        State.cpp ShitSolver.cpp ShitSolver.h)
+        State.cpp
+        ShitSolver.cpp
+        ShitSolver.h)
