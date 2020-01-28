@@ -31,6 +31,8 @@ class MyTestClientHandler : public ClientHandler {
 //	MyTestClientHandler(){
 //
 //	}
+
+	// TODO: CREATE A FULL STRING THAT WILL REPRESENT - PROBLEM (FOR THE CACHE). AND CREATE A VECTOR OF VECTORS FOR PART 3
 	int handleClient(int sockfd) override {
 		char buffer[BUFFER_SIZE];
 		std::vector<std::string> sub_n;
