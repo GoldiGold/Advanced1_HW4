@@ -55,48 +55,48 @@ int MySerialServer::open(int port, ClientHandler *c) {
 //	std::thread seconds(printSeconds);
 //	seconds.detach();
 
-	bool ok = true;
-	while (ok) {
-		struct fd_set rfds;
-		struct timeval connection;
-		FD_ZERO(&rfds);
-		FD_SET(this->sockfd, &rfds);
-		connection.tv_sec = 60;
-		connection.tv_usec = 0;
-		std::cout << "point 0" << std::endl;
-
-		new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
-		c->handleClient(new_socket);
-
-		int retval = select(1, &rfds, NULL, NULL, &connection);
-		std::cout << "point 1" << std::endl;
-		switch(retval) {
-			case 0: //timeout
-				std::cout << "point STOP" << std::endl;
-				this->stop();
-			case -1: // error
-				std::cout << "point ERROR" << std::endl;
-				ok = false;
-				break;
-			default: // can do accept on socket
-				std::cout << "trying to accept" << std::endl;
-				new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
-				std::cout << "about to handle a client" << std::endl;
-				//goy stuff
-				c->handleClient(new_socket);
-				break;
-		}
-	}
-
-//	while ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) != -1) {
-
-//		std::cout << "we accepted a client" << std::endl;
-//		std::cout << "handling client" << std::endl;
-//		c->handleClient(new_socket);
-//		std::cout << "FINISHED handling client" << std::endl;
-//		std::cout << "closed socket" << std::endl;
+//	bool ok = true;
+//	while (ok) {
+//		struct fd_set rfds;
+//		struct timeval connection;
+//		FD_ZERO(&rfds);
+//		FD_SET(this->sockfd, &rfds);
+//		connection.tv_sec = 60;
+//		connection.tv_usec = 0;
+//		std::cout << "point 0" << std::endl;
 //
+//		new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
+//		c->handleClient(new_socket);
+//
+//		int retval = select(1, &rfds, NULL, NULL, &connection);
+//		std::cout << "point 1" << std::endl;
+//		switch(retval) {
+//			case 0: //timeout
+//				std::cout << "point STOP" << std::endl;
+//				this->stop();
+//			case -1: // error
+//				std::cout << "point ERROR" << std::endl;
+//				ok = false;
+//				break;
+//			default: // can do accept on socket
+//				std::cout << "trying to accept" << std::endl;
+//				new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
+//				std::cout << "about to handle a client" << std::endl;
+//				//goy stuff
+//				c->handleClient(new_socket);
+//				break;
+//		}
 //	}
+
+	while ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) != -1) {
+
+		std::cout << "we accepted a client" << std::endl;
+		std::cout << "handling client" << std::endl;
+		c->handleClient(new_socket);
+		std::cout << "FINISHED handling client" << std::endl;
+		std::cout << "closed socket" << std::endl;
+
+	}
 
 	std::cout << "SHIT" << std::endl;
 	std::cout << "didn't accept" << std::endl;

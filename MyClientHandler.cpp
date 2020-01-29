@@ -76,13 +76,13 @@ int MyClientHandler::handleClient(int sockfd) {
 	std::vector<std::string> temp;
 	for (const std::string &line: sub_lines) {
 		temp = split(line, ',');
-		if (temp.size() == 2){
+		if (temp.size() == 2) {
 			if (start_index == -1) {// the second check is the case that the start index hasn't changed
 				start_index = line_index;
-				std::cout << "start: "<< start_index;
-			} else if (end_index == -1){
+				std::cout << "start: " << start_index;
+			} else if (end_index == -1) {
 				end_index = line_index;
-				std::cout << "end: "<< end_index;
+				std::cout << "end: " << end_index;
 			}
 		}
 		mat.push_back(temp);
@@ -109,8 +109,8 @@ int MyClientHandler::handleClient(int sockfd) {
 	std::vector<int> temp_int;
 	matrix.reserve(mat.size());
 	temp_int.reserve(mat[0].size()); // the length of a line - a matrix so every line is the same length.
-	for(const std::vector<std::string>& vec: mat){
-		for (const std::string& arg : vec){
+	for (const std::vector<std::string> &vec: mat) {
+		for (const std::string &arg : vec) {
 			temp_int.push_back(stoi(arg));
 		}
 		matrix.push_back(temp_int);
@@ -118,13 +118,19 @@ int MyClientHandler::handleClient(int sockfd) {
 	}
 
 	auto mat_problem = new MatrixProblem(&matrix, start_x, start_y, end_x, end_y);
-	std::list<char>* solution = solver->solve(mat_problem);
 	std::string desc_solution;
-	for (char c : *solution){
-		desc_solution += directions->at(c);
-		desc_solution += ',';
+
+	// TODO: FIX THE INPUT FOR THE INSERTING OF TO THE CACHE - WE SEND A VECTOR OF VECTORS AND WE NEED TO SEND A STRING.
+	if (this->cache_manager->is_exist(mat_problem)) {
+		desc_solution = this->cache_manager->get_solution(mat_problem);
+	} else {
+		std::list<char> *solution = solver->solve(mat_problem);
+		for (char c : *solution) {
+			desc_solution += directions->at(c);
+			desc_solution += ',';
+		}
+		this->cache_manager->insert(mat_problem, desc_solution);
 	}
-	this->cache_manager->insert(mat_problem, desc_solution);
 	send(sockfd, desc_solution.c_str(), desc_solution.length(), 0);
 
 
@@ -144,8 +150,8 @@ int MyClientHandler::handleClient(int sockfd) {
 // TODO: REMEMBER THAT THE LAST TWO LINES ARE OF THE START-CO AND END-CO.
 
 	std::cout << "the amount of lines is: " << counter << std::endl;
-	send(sockfd, "hello", strlen("hello"), 0);
-	send(sockfd, "fuckkkkk", strlen("fuckkkkk")/*sol.c_str(), sol.length()*/, 0);
+//	send(sockfd, "hello", strlen("hello"), 0);
+//	send(sockfd, "fuckkkkk", strlen("fuckkkkk")/*sol.c_str(), sol.length()*/, 0);
 //		write(sockfd, sol.c_str(), ((size_t)sol.length()));
 	std::cout << "message was sent" << std::endl;
 	close(sockfd);
