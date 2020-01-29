@@ -64,6 +64,10 @@ int MySerialServer::open(int port, ClientHandler *c) {
 		connection.tv_sec = 60;
 		connection.tv_usec = 0;
 		std::cout << "point 0" << std::endl;
+
+		new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
+		c->handleClient(new_socket);
+
 		int retval = select(1, &rfds, NULL, NULL, &connection);
 		std::cout << "point 1" << std::endl;
 		switch(retval) {

@@ -8,8 +8,6 @@
 #include "Solver.h"
 #include "CacheManager.h"
 #include <iostream>
-//#include <string>
-//#include <sstream>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <netinet/in.h>
