@@ -125,6 +125,7 @@ int MyClientHandler::handleClient(int sockfd) {
 		desc_solution += ',';
 	}
 	this->cache_manager->insert(mat_problem, desc_solution);
+	send(sockfd, desc_solution.c_str(), desc_solution.length(), 0);
 
 
 
