@@ -5,34 +5,15 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Advanced1_HW4
         main.cpp
-        Server.h
-        ClientHandler.h
-        MyTestClientHandler.h
-        FileCacheManager.h
-        CacheManager.h
-        MySerialServer.h
-        MySerialServer.cpp
-        BestFirstSearch.h
+        State.cpp
+        State.h
         BestFirstSearch.cpp
-        MatrixProblem.h
+        BestFirstSearch.h
         MatrixProblem.cpp
+        MatrixProblem.h
         Searchable.h
         Searcher.h
         MyPriorityQueue.cpp
-        MyPriorityQueue.h
-        MyCmp.h
+        MyPriorityQueue.h MyCmp.h
         Solver.h
-        CostCmp.h
-        AStarCmp.h
-        BreadthFirstSearch.cpp
-        BreadthFirstSearch.h
-        MyQueue.h
-        MyQueue.cpp
-        DepthFirstSearch.cpp
-        DepthFirstSearch.h
-        MyStack.h
-        MyStack.cpp
-        State.h
-        State.cpp
-        ShitSolver.cpp
-        ShitSolver.h MyClientHandler.cpp MyClientHandler.h)
+        CostCmp.h AStarCmp.h BreadthFirstSearch.cpp BreadthFirstSearch.h MyQueue.h MyQueue.cpp DepthFirstSearch.cpp DepthFirstSearch.h MyStack.h MyStack.cpp SolverSearcher.h)

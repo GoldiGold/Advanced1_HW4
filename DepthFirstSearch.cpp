@@ -44,9 +44,11 @@ std::list<char>* DepthFirstSearch::path(State* s){
 
 
 
-std::list<char>* DepthFirstSearch::solve(Searchable* searchable){
+std::list<char>* DepthFirstSearch::search(Searchable* searchable){
   using namespace std;
-
+  this->openList = new MyStack();
+  closed = new std::unordered_map<std::string, State*>();
+  cost = 0;
   openList->push(searchable->GetInitState());
 
   while(openList->length()> 0){

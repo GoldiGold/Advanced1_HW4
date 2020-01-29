@@ -7,8 +7,12 @@
 
 #include <list>
 #include "Searchable.h"
-#include "Solver.h"
-class Searcher: public Solver<Searchable*, std::list<char>*>{
-  std::list<char>* solve(Searchable* searchable) override = 0;
+//#include "Solver.h"
+// public Solver<Searchable*, std::list<char>*>
+class Searcher{
+ public:
+  virtual std::list<char>* search(Searchable* searchable) = 0;
+  virtual int numberOfClosedNodes() = 0;
+  virtual int GetCost() = 0;
 };
 #endif //ADVANCED1_HW4__SEARCHER_H_

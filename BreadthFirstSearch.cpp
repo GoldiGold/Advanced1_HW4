@@ -43,9 +43,11 @@ std::list<char>* BreadthFirstSearch::path(State* s){
 
 
 
-std::list<char>* BreadthFirstSearch::solve(Searchable* searchable){
+std::list<char>* BreadthFirstSearch::search(Searchable* searchable){
   using namespace std;
-
+  this->openList = new MyQueue();
+  closed = new std::unordered_map<std::string, State*>();
+  cost = 0;
   openList->push(searchable->GetInitState());
 
   while(openList->length()> 0){

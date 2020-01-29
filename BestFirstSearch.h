@@ -21,9 +21,9 @@ class BestFirstSearch: public Searcher{
  public:
   BestFirstSearch();
   ~BestFirstSearch(){delete openList;}
-  std::list<char>* solve(Searchable* searchable) override;
-  int GetCost() const {return cost;}
-  int numberOfClosedNodes(){
+  std::list<char>* search(Searchable* searchable) override;
+  int GetCost() override {return cost;}
+  int numberOfClosedNodes() override{
     return closed->size();
   }
 
@@ -70,8 +70,11 @@ std::list<char>* BestFirstSearch<CMP>::path(State* s){
 
 
 template<class CMP>
-std::list<char>* BestFirstSearch<CMP>::solve(Searchable* searchable){
+std::list<char>* BestFirstSearch<CMP>::search(Searchable* searchable){
   using namespace std;
+  this->openList = new MyPriorityQueue<CMP>();
+  closed = new std::unordered_map<std::string, State*>();
+  cost = 0;
   openList->setInit(searchable->GetInitState());
   openList->push(searchable->GetInitState());
 
