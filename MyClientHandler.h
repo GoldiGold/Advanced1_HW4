@@ -15,22 +15,26 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <vector>
+#include <unordered_map>
 
 #define BUFFER_SIZE 1024
-
-
-
 
 class MyClientHandler : public ClientHandler {
  private:
 	Solver<MatrixProblem *, std::list<char> *> *solver;
-	CacheManager<MatrixProblem *, std::list<char> *> *cache_manager;
+	CacheManager<MatrixProblem *, std::string> *cache_manager;
+	std::unordered_map<char, std::string> *directions;
 
  public:
 	MyClientHandler(Solver<MatrixProblem *, std::list<char> *> *sol,
-					CacheManager<MatrixProblem *, std::list<char> *> *cm) {
+					CacheManager<MatrixProblem *, std::string> *cm) {
 		this->solver = sol;
 		this->cache_manager = cm;
+		directions = new std::unordered_map<char, std::string>;
+		directions->insert({'d', "Down"});
+		directions->insert({'u', "Up"});
+		directions->insert({'l', "Left"});
+		directions->insert({'r', "Right"});
 	}
 
 	int handleClient(int sockfd) override;
@@ -86,6 +90,5 @@ class MyClientHandler : public ClientHandler {
 //	}
 
 };
-
 
 #endif //ADVANCED1_HW4__MYCLIENTHANDLER_H_

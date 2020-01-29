@@ -118,7 +118,13 @@ int MyClientHandler::handleClient(int sockfd) {
 	}
 
 	auto mat_problem = new MatrixProblem(&matrix, start_x, start_y, end_x, end_y);
-	this->cache_manager->insert(mat_problem, (solver->solve(mat_problem)));
+	std::list<char>* solution = solver->solve(mat_problem);
+	std::string desc_solution;
+	for (char c : *solution){
+		desc_solution += directions->at(c);
+		desc_solution += ',';
+	}
+	this->cache_manager->insert(mat_problem, desc_solution);
 
 
 
