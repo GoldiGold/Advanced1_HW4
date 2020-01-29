@@ -55,11 +55,6 @@ int MySerialServer::open(int port, ClientHandler *c) {
 //	std::thread seconds(printSeconds);
 //	seconds.detach();
 
-
-//	signal(SIGALRM, MySerialServer::closing_func);
-//	unsigned int secs = 5;
-//	alarm(secs);
-
 	bool ok = true;
 	while (ok) {
 		struct fd_set rfds;
@@ -68,15 +63,21 @@ int MySerialServer::open(int port, ClientHandler *c) {
 		FD_SET(this->sockfd, &rfds);
 		connection.tv_sec = 60;
 		connection.tv_usec = 0;
-		int retval = select(1, &rfds, nullptr, nullptr, &connection);
+		std::cout << "point 0" << std::endl;
+		int retval = select(1, &rfds, NULL, NULL, &connection);
+		std::cout << "point 1" << std::endl;
 		switch(retval) {
 			case 0: //timeout
+				std::cout << "point STOP" << std::endl;
 				this->stop();
 			case -1: // error
+				std::cout << "point ERROR" << std::endl;
 				ok = false;
 				break;
 			default: // can do accept on socket
+				std::cout << "trying to accept" << std::endl;
 				new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr));
+				std::cout << "about to handle a client" << std::endl;
 				//goy stuff
 				c->handleClient(new_socket);
 				break;

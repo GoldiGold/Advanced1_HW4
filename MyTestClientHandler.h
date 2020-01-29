@@ -7,8 +7,12 @@
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
-#include <string>
-#include <sstream>
+#include <iostream>
+//#include <string>
+//#include <sstream>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <netinet/in.h>
 #define BUFFER_SIZE 1024
 
 //std::vector<std::string> split(const std::string &s, char delimiter) {
@@ -35,37 +39,37 @@ class MyTestClientHandler : public ClientHandler {
 	}
 
 	// TODO: CREATE A FULL STRING THAT WILL REPRESENT - PROBLEM (FOR THE CACHE). AND CREATE A VECTOR OF VECTORS FOR PART 3
-//	int handleClient(int sockfd) override {
-//		char buffer[BUFFER_SIZE];
-////		std::vector<std::string> sub_n;
-//		std::string t;
-//		int counter = 0;
-//		int i = 0;
-//		do {
-//			ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
-//			t = buffer;
-////			std::cout << buffer << std::endl;
-//			if (t.find('\n') != std::string::npos) {
-//				++counter;
-//			}
-//			++i;
-////			sub_n = split(t, "\n");
-//		} while (t.find("end") == std::string::npos);
+	int handleClient(int sockfd) override {
+		char buffer[BUFFER_SIZE];
+//		std::vector<std::string> sub_n;
+		std::string t;
+		int counter = 0;
+		int i = 0;
+		do {
+			ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
+			t = buffer;
+			std::cout << buffer << std::endl;
+			if (t.find('\n') != std::string::npos) {
+				++counter;
+			}
+			++i;
+//			sub_n = split(t, "\n");
+		} while (t.find("end") == std::string::npos);
 //		std::string sol = this->s->solve("end");
 //		this->cm->insert("end", sol);
-//
-//		std::cout << "the amount of lines is: " << counter << std::endl;
-//		send(sockfd, "hello", strlen("hello"), 0);
+
+		std::cout << "the amount of lines is: " << counter << std::endl;
+		send(sockfd, "hello", strlen("hello"), 0);
 //		send(sockfd, sol.c_str(), sol.length(), 0);
-////		write(sockfd, sol.c_str(), ((size_t)sol.length()));
-//		std::cout << "message was sent" << std::endl;
-//		close(sockfd);
-//
+//		write(sockfd, sol.c_str(), ((size_t)sol.length()));
+		std::cout << "message was sent" << std::endl;
+		close(sockfd);
+
 //		std::cout << "solution from file: " << this->cm->get_solution("end") << std::endl;
-//
-//
-//		return 1;
-//	}
+
+
+		return 1;
+	}
 
 };
 

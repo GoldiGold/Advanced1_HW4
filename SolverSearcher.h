@@ -16,10 +16,10 @@ class SolverSearcher: public Solver<Searchable*, std::list<char>*> {
   std::list<char>* solve(Searchable* p) override{
     return searcher->search(p);
   }
-  int numberOfClosedNodes() override {
+  int numberOfClosedNodes() /*override*/ {
     return searcher->numberOfClosedNodes();
   }
-  int GetCost() override{
+  int GetCost() /*override*/{
     return searcher->GetCost();
   }
 };

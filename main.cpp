@@ -7,6 +7,7 @@
 #include "BreadthFirstSearch.h"
 #include "MyCmp.h"
 #include "SolverSearcher.h"
+#include "MyTestClientHandler.h"
 
 int main() {
 	std::cout << "Hello, World! VERSION 2.0" << std::endl;
@@ -30,7 +31,9 @@ int main() {
 
 	auto my_serial_server = new MySerialServer();
 	auto cache = new FileCacheManager<Searchable *, std::list<char> *>();
-	my_serial_server->open(5400,
-						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch()), cache));
+	auto string_cache = new FileCacheManager<std::string, std::string>();
+	my_serial_server->open(5401,
+						   new MyTestClientHandler<std::string, std::string>(new ShitSolver(),
+																			 string_cache))/*new SolverSearcher(new BreadthFirstSearch()), cache))*/;
 	return 0;
 }

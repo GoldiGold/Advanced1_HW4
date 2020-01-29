@@ -4,20 +4,11 @@
 
 #ifndef ADVANCED1_HW4__MYCLIENTHANDLER_H_
 #define ADVANCED1_HW4__MYCLIENTHANDLER_H_
-//#include "ClientHandler.h"
-//#include "Solver.h"
 #include "Searchable.h"
-//#include "Searcher.h"
-//#include "CacheManager.h"
-//#include "MatrixProblem.h"
 #include <sys/socket.h>
-//#include <sstream>
-//#include <string>
-
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
-//#include <string>
 #include <sstream>
 #include <unistd.h>
 #include <netinet/in.h>

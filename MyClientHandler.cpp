@@ -25,6 +25,7 @@ std::vector<std::string> split(const std::string &s, char delimiter) {
 }
 
 int MyClientHandler::handleClient(int sockfd) {
+	std::cout<< "handling client right now" << std::endl;
 	char buffer[BUFFER_SIZE];
 //		std::vector<std::string> sub_n;
 	std::string t;
