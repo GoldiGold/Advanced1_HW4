@@ -1,11 +1,12 @@
 #include <iostream>
-#include <sys/time.h>
+//#include <sys/time.h>
 #include "MySerialServer.h"
 #include "MyClientHandler.h"
 #include "FileCacheManager.h"
 #include "ShitSolver.h"
 #include "BreadthFirstSearch.h"
 #include "MyCmp.h"
+#include "SolverSearcher.h"
 
 int main() {
 	std::cout << "Hello, World! VERSION 2.0" << std::endl;
@@ -30,6 +31,6 @@ int main() {
 	auto my_serial_server = new MySerialServer();
 	auto cache = new FileCacheManager<Searchable *, std::list<char> *>();
 	my_serial_server->open(5400,
-						   new MyClientHandler(new BreadthFirstSearch(), cache));
+						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch()), cache));
 	return 0;
 }

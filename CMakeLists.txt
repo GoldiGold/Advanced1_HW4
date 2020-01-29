@@ -16,4 +16,25 @@ add_executable(Advanced1_HW4
         MyPriorityQueue.cpp
         MyPriorityQueue.h MyCmp.h
         Solver.h
-        CostCmp.h AStarCmp.h BreadthFirstSearch.cpp BreadthFirstSearch.h MyQueue.h MyQueue.cpp DepthFirstSearch.cpp DepthFirstSearch.h MyStack.h MyStack.cpp SolverSearcher.h)
+        CostCmp.h
+        AStarCmp.h
+        BreadthFirstSearch.cpp
+        BreadthFirstSearch.h
+        MyQueue.h
+        MyQueue.cpp
+        DepthFirstSearch.cpp
+        DepthFirstSearch.h
+        MyStack.h
+        MyStack.cpp
+        SolverSearcher.h
+        CacheManager.h
+        ClientHandler.h
+        FileCacheManager.h
+        MyClientHandler.h
+        MyClientHandler.cpp
+        MySerialServer.h
+        MySerialServer.cpp
+        MyTestClientHandler.h
+        Server.h
+        ShitSolver.h
+        ShitSolver.cpp)

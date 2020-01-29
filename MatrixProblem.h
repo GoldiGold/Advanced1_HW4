@@ -5,11 +5,11 @@
 #ifndef ADVANCED1_HW4__MATRIXPROBLEM_H_
 #define ADVANCED1_HW4__MATRIXPROBLEM_H_
 #include "Searchable.h"
-#include <utility>
+//#include <utility>
 #include <vector>
 
 
-#include <iostream>
+//#include <iostream>
 class MatrixProblem: public Searchable{
   std::vector<std::vector<int>>* matrix; //matrix of costs
 //  std::vector<std::vector<State<std::pair<int, int>>>>* states;
