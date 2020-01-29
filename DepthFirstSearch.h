@@ -20,8 +20,8 @@ class DepthFirstSearch: public Searcher{
   DepthFirstSearch();
   ~DepthFirstSearch(){delete openList;}
   std::list<char>* search(Searchable* searchable) override;
-  int GetCost() const {return cost;}
-  int numberOfClosedNodes(){return closed->size();}
+  int GetCost() override {return cost;}
+  int numberOfClosedNodes() override {return closed->size();}
 
 };
 
