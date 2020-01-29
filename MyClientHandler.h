@@ -21,12 +21,12 @@
 
 class MyClientHandler : public ClientHandler {
  private:
-	Solver<MatrixProblem *, std::list<char> *> *solver;
+	Solver<Searchable *, std::list<char> *> *solver;
 	CacheManager<MatrixProblem *, std::string> *cache_manager;
 	std::unordered_map<char, std::string> *directions;
 
  public:
-	MyClientHandler(Solver<MatrixProblem *, std::list<char> *> *sol,
+	MyClientHandler(Solver<Searchable *, std::list<char> *> *sol,
 					CacheManager<MatrixProblem *, std::string> *cm) {
 		this->solver = sol;
 		this->cache_manager = cm;
