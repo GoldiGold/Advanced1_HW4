@@ -4,3 +4,4 @@
 
 #include "BestFirstSearch.h"
 
+//I put the code in the h file because of the template
