@@ -6,6 +6,7 @@
 #define ADVANCED1_HW4__COSTCMP_H_
 #include "State.h"
 #include "MyCmp.h"
+//compare by cost
 class CostCmp: public MyCmp{
  public:
   bool operator() (State* left, State* right) override {
