@@ -14,7 +14,7 @@ class AStarCmp: public MyCmp{
     gx = 0;
     gy = 0;
   }
-  void setInit(State* init){
+  void setInit(State* init) override {
     gx = init->GetY();
     gy = init->GetY();
   }

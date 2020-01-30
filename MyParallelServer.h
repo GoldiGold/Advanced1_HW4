@@ -6,6 +6,7 @@
 #define ADVANCED1_HW4_CMAKE_BUILD_DEBUG_MYPARALLELSERVER_H_
 
 #include "Server.h"
+#include "MyClientHandler.h"
 #include <thread>
 
 class MyParallelServer: public Server {
@@ -17,7 +18,6 @@ class MyParallelServer: public Server {
 	MyParallelServer();
 	int open(int port, ClientHandler* c) override ;
 	int stop() override ;
-	void closing_func(int signo);
 };
 
 #endif //ADVANCED1_HW4_CMAKE_BUILD_DEBUG_MYPARALLELSERVER_H_

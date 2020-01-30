@@ -21,11 +21,11 @@
 
 class MyClientHandler : public ClientHandler {
  private:
+	std::unordered_map<char, std::string> *directions;
 	Solver<Searchable *, std::list<char> *> *solver;
 	CacheManager<std::string , std::string> *cache_manager;
-	std::unordered_map<char, std::string> *directions;
-
  public:
+
 	MyClientHandler(Solver<Searchable *, std::list<char> *> *sol,
 					CacheManager<std::string, std::string> *cm) {
 		this->solver = sol;
@@ -39,6 +39,7 @@ class MyClientHandler : public ClientHandler {
 
 	MatrixProblem* createMatProblem(const std::vector<std::string>& sub_lines);
 
+	MyClientHandler* clone() override;
 	int handleClient(int sockfd) override;
 //	{
 //		std::cout << "handling client right now" << std::endl;

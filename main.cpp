@@ -37,5 +37,14 @@ int main() {
 	my_serial_server->open(5400, /*new MyTestClientHandler<std::string, std::string>(new ShitSolver(), string_cache)*/
 						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch()), cache))
 		/*new SolverSearcher(new BreadthFirstSearch()), cache))*/;
+
+//	std::list<int> q;
+//	q.push_back(3);
+//	q.push_back(5);
+//	std::list<int> temp = q;
+//	temp.pop_back();
+//	for (int kI : q) {
+//		std::cout << kI << std::endl;
+//	}
 	return 0;
 }

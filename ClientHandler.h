@@ -7,5 +7,6 @@
 class ClientHandler {
  public:
 	virtual int handleClient(int sockfd) = 0;
+	virtual ClientHandler* clone() = 0;
 };
 #endif //ADVANCED1_HW4__CLIENTHANDLER_H_

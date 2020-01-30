@@ -4,8 +4,6 @@
 
 #include "MyParallelServer.h"
 
-#include "MyClientHandler.h"
-
 static void printSeconds() {
 	std::cout << "entered the thread" << std::endl;
 	int seconds = 1;
@@ -75,7 +73,7 @@ int MyParallelServer::open(int port, ClientHandler *c) {
 //		switch(retval) {
 //			case 0: //timeout
 //				std::cout << "point STOP" << std::endl;
-//				this->stop();
+//		ff		this->stop();
 //			case -1: // error
 //				std::cout << "point ERROR" << std::endl;
 //				ok = false;
@@ -89,15 +87,23 @@ int MyParallelServer::open(int port, ClientHandler *c) {
 //				break;
 //		}
 //	}
-
+	std::vector<std::thread *> threadS;
 	while ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) != -1) {
 
 		std::cout << "we accepted a client" << std::endl;
 		std::cout << "handling client" << std::endl;
-		new std::thread (&MyClientHandler::handleClient, c, new_socket); // TODO: this is something we need for the parallel
+		auto new_client_handler = c->clone();
+		//new std::thread (&MyClientHandler::handleClient, new_client_handler, new_socket); // TODO: this is something we need for the parallel
+		threadS.push_back(new std::thread([new_client_handler, new_socket]() {
+		  new_client_handler->handleClient(new_socket);
+		})); // TODO: this is something we need for the parallel
+
 		std::cout << "FINISHED handling client" << std::endl;
 		std::cout << "closed socket" << std::endl;
-
+	}
+	for (auto &t: threadS) {
+		t->join();
+		delete t;
 	}
 
 	std::cout << "SHIT" << std::endl;

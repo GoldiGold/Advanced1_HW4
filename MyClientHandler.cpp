@@ -171,6 +171,9 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 
 	return new MatrixProblem(matrix, start_x, start_y, end_x, end_y);
 }
+MyClientHandler *MyClientHandler::clone() {
+	return new MyClientHandler(this->solver, this->cache_manager);
+}
 //std::vector<std::string> MyClientHandler::findStartCo(std::vector<std::string> problem) {
 //	int start_index = 0;
 //	int end_index = 0;
