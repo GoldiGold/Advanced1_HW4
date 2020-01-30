@@ -6,11 +6,13 @@
 #define ADVANCED1_HW4__STATE_H_
 #include <limits>
 #include <iostream>
+
+//a state in the problem
 class State{
   int x;
   int y;
-  State* cameFrom;
-  int cost;
+  State* cameFrom;//parent
+  int cost;//cost
 
  public:
   State(int x1, int y1){
