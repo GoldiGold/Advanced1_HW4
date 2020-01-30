@@ -9,6 +9,7 @@
 #include <queue>
 #include <unordered_map>
 #include <list>
+//wrapping class to priority queue
 template<class CMP>
 class MyPriorityQueue{
   std::priority_queue<State*, std::vector<State*>, CMP>* q;
