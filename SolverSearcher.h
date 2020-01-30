@@ -22,5 +22,9 @@ class SolverSearcher: public Solver<Searchable*, std::list<std::pair<char,int>>*
   int GetCost() /*override*/{
     return searcher->GetCost();
   }
+  SolverSearcher* clone() override{
+  	return new SolverSearcher(this->searcher->clone());
+  }
+
 };
 #endif //ADVANCED1_HW4__SOLVERSEARCHER_H_

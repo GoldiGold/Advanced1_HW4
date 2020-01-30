@@ -25,24 +25,27 @@ std::vector<std::string> split(const std::string &s, char delimiter) {
 //}
 
 int MyClientHandler::handleClient(int sockfd) {
-	std::cout << "handling client right now" << std::endl;
+//	std::cout << "handling client right now" << std::endl;
 	char buffer[BUFFER_SIZE];
 //		std::vector<std::string> sub_n;
 	std::string t;
 	std::string problem;
-	int counter = 0;
-	int i = 0;
+//	int counter = 0;
+//	int i = 0;
 	do {
 		// TODO: UNDERSTAND WHY WE AIN'T GETTING ANY VALUES FROM THE CLIENT (MAYBE SOMETHING WITH THE INCLUDED HEADERS)
 		ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
-		std::cout <<"buffer data:" << buffer << std::endl;
+//		std::cout <<"buffer data:" << buffer << std::endl;
 		t = buffer;
 //		std::cout << buffer << std::endl;
 		problem += t;
 		if (t.find('\n') != std::string::npos) {
-			++counter;
+//			++counter;
 		}
-		++i;
+//		++i;
+		for (int kI = 0; kI < BUFFER_SIZE; ++kI) {
+			buffer[kI] = 0;
+		}
 	} while (t.find("end") == std::string::npos);
 
 	int endIndex = problem.find("end");
@@ -102,7 +105,7 @@ int MyClientHandler::handleClient(int sockfd) {
 
 // TODO: REMEMBER THAT THE LAST TWO LINES ARE OF THE START-CO AND END-CO.
 
-	std::cout << "the amount of lines is: " << counter << std::endl;
+//	std::cout << "the amount of lines is: " << counter << std::endl;
 //	send(sockfd, "hello", strlen("hello"), 0);
 //	send(sockfd, "fuckkkkk", strlen("fuckkkkk")/*sol.c_str(), sol.length()*/, 0);
 //		write(sockfd, sol.c_str(), ((size_t)sol.length()));
@@ -192,7 +195,7 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 	return new MatrixProblem(matrix, start_x, start_y, end_x, end_y);
 }
 MyClientHandler *MyClientHandler::clone() {
-	return new MyClientHandler(this->solver, this->cache_manager);
+	return new MyClientHandler(this->solver->clone(), this->cache_manager->clone());
 }
 //std::vector<std::string> MyClientHandler::findStartCo(std::vector<std::string> problem) {
 //	int start_index = 0;

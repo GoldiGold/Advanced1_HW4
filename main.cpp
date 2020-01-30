@@ -33,8 +33,8 @@ int main() {
 //	std::cout << "time ended: " << tvAfter.tv_sec << " i is : " << i << std::endl;
 
 	auto my_p_server = new MyParallelServer();
-	auto cache = new FileCacheManager<std::string, std::string>();
-	auto string_cache = new FileCacheManager<std::string, std::string>();
+	auto cache = new FileCacheManager();
+	auto string_cache = new FileCacheManager();
 	my_p_server->open(5400, /*new MyTestClientHandler<std::string, std::string>(new ShitSolver(), string_cache)*/
 						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch()), cache))
 		/*new SolverSearcher(new BreadthFirstSearch()), cache))*/;

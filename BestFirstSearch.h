@@ -26,6 +26,9 @@ class BestFirstSearch: public Searcher{
   int numberOfClosedNodes() override{
     return closed->size();
   }
+  BestFirstSearch* clone() override{
+  	return new BestFirstSearch<CMP>();
+  }
 
 };
 

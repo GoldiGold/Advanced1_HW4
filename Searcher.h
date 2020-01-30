@@ -14,5 +14,8 @@ class Searcher{
   virtual std::list<std::pair<char,int>>* search(Searchable* searchable) = 0;
   virtual int numberOfClosedNodes() = 0;
   virtual int GetCost() = 0;
+  virtual Searcher* clone() = 0;
+
 };
+
 #endif //ADVANCED1_HW4__SEARCHER_H_

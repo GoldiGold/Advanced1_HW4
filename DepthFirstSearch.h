@@ -22,7 +22,9 @@ class DepthFirstSearch: public Searcher{
   std::list<std::pair<char,int>>* search(Searchable* searchable) override;
   int GetCost() override {return cost;}
   int numberOfClosedNodes() override {return closed->size();}
-
+  DepthFirstSearch* clone() override {
+  	return new DepthFirstSearch();
+  }
 };
 
 #endif //ADVANCED1_HW4__DEPTHFIRSTSEARCH_H_

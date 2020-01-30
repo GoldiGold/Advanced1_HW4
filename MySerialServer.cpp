@@ -42,7 +42,7 @@ int MySerialServer::open(int port, ClientHandler *c) {
 	}
 
 	struct timeval tv;
-	tv.tv_sec = 60; // TODO: change to 120 seconds
+	tv.tv_sec = 120; // TODO: change to 120 seconds
 	tv.tv_usec = 0;
 	setsockopt(this->sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *) &tv, sizeof(tv));
 	std::cout << "about to accept shit..." << std::endl;

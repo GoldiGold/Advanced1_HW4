@@ -45,7 +45,7 @@ std::list<State *> *MatrixProblem::GetPossibleStates(State *s) {
 }
 std::string MatrixProblem::toString() {
 	std::string desc;
-	std::cout << "bigger size: " << (*matrix).size() << std::endl;
+//	std::cout << "bigger size: " << (*matrix).size() << std::endl;
 
 	for (const std::vector<int> &vec:*matrix) {
 //		for (int val : vec) {

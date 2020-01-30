@@ -8,6 +8,7 @@ template<class Problem, class Solution>
 class Solver {
  public:
 	virtual Solution solve(Problem p) = 0;
+	virtual Solver* clone() = 0;
 //	virtual int numberOfClosedNodes() = 0;
 //	virtual int GetCost() = 0;
 };

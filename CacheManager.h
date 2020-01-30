@@ -11,6 +11,8 @@ class CacheManager {
 	virtual Solution get_solution(Problem p) = 0;
 	virtual void insert(Problem p, Solution s) = 0;
 	virtual bool is_exist(Problem p) = 0;
+	virtual CacheManager* clone() = 0;
+
 };
 
 #endif //ADVANCED1_HW4__CACHEMANAGER_H_

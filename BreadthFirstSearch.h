@@ -22,6 +22,9 @@ class BreadthFirstSearch: public Searcher{
   std::list<std::pair<char,int>>* search(Searchable* searchable) override;
   int GetCost() override {return cost;}
   int numberOfClosedNodes() override {return closed->size();}
+  BreadthFirstSearch* clone() override {
+  	return new BreadthFirstSearch();
+  }
 
 };
 
