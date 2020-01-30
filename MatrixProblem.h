@@ -20,6 +20,7 @@ class MatrixProblem: public Searchable{
   State* GetInitState() override{ return init;}
   bool isGoalState(State* s) override { return (*goal == s);}
   std::list<State*>* GetPossibleStates(State* s) override;
+  std::string toString();
 
 };
 #endif //ADVANCED1_HW4__MATRIXPROBLEM_H_

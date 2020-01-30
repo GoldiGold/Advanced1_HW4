@@ -66,6 +66,54 @@ int MyClientHandler::handleClient(int sockfd) {
 
 
 	// CREATING THE MATRIX
+	auto mat_problem = this->createMatProblem(sub_lines);
+//	for (const std::string& line: sub_lines){
+//		std::cout << "after matrix creation: " << line << std::endl;
+//	}
+	std::cout << mat_problem->toString() << std::endl;
+	std::string desc_solution;
+
+	// TODO: FIX THE INPUT FOR THE INSERTING OF TO THE CACHE - WE SEND A VECTOR OF VECTORS AND WE NEED TO SEND A STRING.
+	if (this->cache_manager->is_exist(mat_problem)) {
+		desc_solution = this->cache_manager->get_solution(mat_problem);
+	} else {
+		std::list<char> *solution = solver->solve(mat_problem);
+		for (char c : *solution) {
+			desc_solution += directions->at(c);
+			desc_solution += ',';
+		}
+		this->cache_manager->insert(mat_problem, desc_solution);
+	}
+	send(sockfd, desc_solution.c_str(), desc_solution.length(), 0);
+
+
+
+//	matrix.
+//	sizeee = sub_lines.size();
+//	for (int indexx = 0; indexx < sizeee; ++indexx) {
+//		std::cout << "line: " << sub_lines[indexx] << std::endl;
+//	}
+
+
+//		std::cout << problem << std::endl;
+//	std::string sol = this->solver->solve("end");
+//	this->cache_manager->insert("end", sol);
+//		std::vector<std::string> lines = split(problem, '\n');
+
+// TODO: REMEMBER THAT THE LAST TWO LINES ARE OF THE START-CO AND END-CO.
+
+	std::cout << "the amount of lines is: " << counter << std::endl;
+//	send(sockfd, "hello", strlen("hello"), 0);
+//	send(sockfd, "fuckkkkk", strlen("fuckkkkk")/*sol.c_str(), sol.length()*/, 0);
+//		write(sockfd, sol.c_str(), ((size_t)sol.length()));
+	std::cout << "message was sent" << std::endl;
+	close(sockfd);
+
+//		std::cout << "solution from file: " << this->cache_manager->get_solution("end") << std::endl;
+
+	return 1;
+}
+MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> &sub_lines) {
 	std::vector<std::vector<std::string>> mat;
 
 	mat.reserve(sub_lines.size());
@@ -111,54 +159,19 @@ int MyClientHandler::handleClient(int sockfd) {
 	temp_int.reserve(mat[0].size()); // the length of a line - a matrix so every line is the same length.
 	for (const std::vector<std::string> &vec: mat) {
 		for (const std::string &arg : vec) {
-			temp_int.push_back(stoi(arg));
+			try {
+				temp_int.push_back(stoi(arg));
+			} catch (...) {
+				temp_int.push_back(0);
+			}
 		}
 		matrix.push_back(temp_int);
 		temp_int.clear();
 	}
 
-	auto mat_problem = new MatrixProblem(&matrix, start_x, start_y, end_x, end_y);
-	std::string desc_solution;
+	std::cout << "size of matrix: " << matrix.size() << std::endl;
 
-	// TODO: FIX THE INPUT FOR THE INSERTING OF TO THE CACHE - WE SEND A VECTOR OF VECTORS AND WE NEED TO SEND A STRING.
-	if (this->cache_manager->is_exist(mat_problem)) {
-		desc_solution = this->cache_manager->get_solution(mat_problem);
-	} else {
-		std::list<char> *solution = solver->solve(mat_problem);
-		for (char c : *solution) {
-			desc_solution += directions->at(c);
-			desc_solution += ',';
-		}
-		this->cache_manager->insert(mat_problem, desc_solution);
-	}
-	send(sockfd, desc_solution.c_str(), desc_solution.length(), 0);
-
-
-
-//	matrix.
-//	sizeee = sub_lines.size();
-//	for (int indexx = 0; indexx < sizeee; ++indexx) {
-//		std::cout << "line: " << sub_lines[indexx] << std::endl;
-//	}
-
-
-//		std::cout << problem << std::endl;
-//	std::string sol = this->solver->solve("end");
-//	this->cache_manager->insert("end", sol);
-//		std::vector<std::string> lines = split(problem, '\n');
-
-// TODO: REMEMBER THAT THE LAST TWO LINES ARE OF THE START-CO AND END-CO.
-
-	std::cout << "the amount of lines is: " << counter << std::endl;
-//	send(sockfd, "hello", strlen("hello"), 0);
-//	send(sockfd, "fuckkkkk", strlen("fuckkkkk")/*sol.c_str(), sol.length()*/, 0);
-//		write(sockfd, sol.c_str(), ((size_t)sol.length()));
-	std::cout << "message was sent" << std::endl;
-	close(sockfd);
-
-//		std::cout << "solution from file: " << this->cache_manager->get_solution("end") << std::endl;
-
-	return 1;
+	return new MatrixProblem(&matrix, start_x, start_y, end_x, end_y);
 }
 //std::vector<std::string> MyClientHandler::findStartCo(std::vector<std::string> problem) {
 //	int start_index = 0;

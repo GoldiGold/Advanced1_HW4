@@ -37,6 +37,8 @@ class MyClientHandler : public ClientHandler {
 		directions->insert({'r', "Right"});
 	}
 
+	MatrixProblem* createMatProblem(const std::vector<std::string>& sub_lines);
+
 	int handleClient(int sockfd) override;
 //	{
 //		std::cout << "handling client right now" << std::endl;
