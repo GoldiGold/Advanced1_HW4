@@ -39,6 +39,7 @@ BestFirstSearch<CMP>::BestFirstSearch() {
   cost = 0;
 }
 
+//find the path 
 template<class CMP>
 std::list<std::pair<char,int>>* BestFirstSearch<CMP>::path(State* s){
   using namespace std;
@@ -69,15 +70,12 @@ std::list<std::pair<char,int>>* BestFirstSearch<CMP>::path(State* s){
     l->push_front(p);
     sTmp = cf;
     cf = cf->GetCameFrom();
-//    if(cf== nullptr){
-//    	p.second+=sTmp.
-//    }
   }
   return l;
 }
 
 
-
+//like in the lectures
 template<class CMP>
 std::list<std::pair<char,int>>* BestFirstSearch<CMP>::search(Searchable* searchable){
   using namespace std;
