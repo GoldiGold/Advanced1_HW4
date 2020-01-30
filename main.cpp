@@ -30,10 +30,10 @@ int main() {
 //	std::cout << "time ended: " << tvAfter.tv_sec << " i is : " << i << std::endl;
 
 	auto my_serial_server = new MySerialServer();
-	auto cache = new FileCacheManager<MatrixProblem *, std::string>();
+	auto cache = new FileCacheManager<std::string, std::string>();
 	auto string_cache = new FileCacheManager<std::string, std::string>();
 	my_serial_server->open(5400, /*new MyTestClientHandler<std::string, std::string>(new ShitSolver(), string_cache)*/
 						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch), cache))
-						   /*new SolverSearcher(new BreadthFirstSearch()), cache))*/;
+		/*new SolverSearcher(new BreadthFirstSearch()), cache))*/;
 	return 0;
 }

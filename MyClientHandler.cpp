@@ -63,37 +63,33 @@ int MyClientHandler::handleClient(int sockfd) {
 //		std::cout << "the line is: " << sub_lines[index_to_erase[j]] << std::endl;
 		sub_lines.erase(sub_lines.begin() + index_to_erase[j]);
 	}
-
-
 	// CREATING THE MATRIX
 	auto mat_problem = this->createMatProblem(sub_lines);
 //	for (const std::string& line: sub_lines){
 //		std::cout << "after matrix creation: " << line << std::endl;
 //	}
-	std::cout << mat_problem->toString() << std::endl;
+	std::string matrix_desc = mat_problem->toString();
 	std::string desc_solution;
 
 	// TODO: FIX THE INPUT FOR THE INSERTING OF TO THE CACHE - WE SEND A VECTOR OF VECTORS AND WE NEED TO SEND A STRING.
-	if (this->cache_manager->is_exist(mat_problem)) {
-		desc_solution = this->cache_manager->get_solution(mat_problem);
+	if (this->cache_manager->is_exist(matrix_desc)) {
+		std::cout << "exist already" << std::endl;
+		desc_solution = this->cache_manager->get_solution(matrix_desc);
 	} else {
+		std::cout << "new problem" << std::endl;
 		std::list<char> *solution = solver->solve(mat_problem);
 		for (char c : *solution) {
 			desc_solution += directions->at(c);
 			desc_solution += ',';
 		}
-		this->cache_manager->insert(mat_problem, desc_solution);
+		this->cache_manager->insert(matrix_desc, desc_solution);
 	}
 	send(sockfd, desc_solution.c_str(), desc_solution.length(), 0);
-
-
-
 //	matrix.
 //	sizeee = sub_lines.size();
 //	for (int indexx = 0; indexx < sizeee; ++indexx) {
 //		std::cout << "line: " << sub_lines[indexx] << std::endl;
 //	}
-
 
 //		std::cout << problem << std::endl;
 //	std::string sol = this->solver->solve("end");
@@ -153,9 +149,9 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 
 	std::cout << "size:::: " << mat.size() << std::endl;
 
-	std::vector<std::vector<int>> matrix;
+	std::vector<std::vector<int>>* matrix = new std::vector<std::vector<int>>;
 	std::vector<int> temp_int;
-	matrix.reserve(mat.size());
+	matrix->reserve(mat.size());
 	temp_int.reserve(mat[0].size()); // the length of a line - a matrix so every line is the same length.
 	for (const std::vector<std::string> &vec: mat) {
 		for (const std::string &arg : vec) {
@@ -165,13 +161,13 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 				temp_int.push_back(0);
 			}
 		}
-		matrix.push_back(temp_int);
+		matrix->push_back(temp_int);
 		temp_int.clear();
 	}
 
-	std::cout << "size of matrix: " << matrix.size() << std::endl;
+	std::cout << "size of matrix: " << matrix->size() << std::endl;
 
-	return new MatrixProblem(&matrix, start_x, start_y, end_x, end_y);
+	return new MatrixProblem(matrix, start_x, start_y, end_x, end_y);
 }
 //std::vector<std::string> MyClientHandler::findStartCo(std::vector<std::string> problem) {
 //	int start_index = 0;

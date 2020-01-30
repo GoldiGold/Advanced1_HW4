@@ -47,15 +47,15 @@ std::string MatrixProblem::toString() {
 	std::string desc;
 	std::cout << "bigger size: " << (*matrix).size() << std::endl;
 
-	for (const std::vector<int> &vec:*this->matrix) {
+	for (const std::vector<int> &vec:*matrix) {
 //		for (int val : vec) {
-	std::cout << "size: " << vec.size() << std::endl;
+//		std::cout << "size: " << vec.size() << std::endl;
 		for (int kI = 0; kI < vec.size(); ++kI) {
 			desc += std::to_string(vec[kI]);
 			desc += ',';
-			std::cout << "val: "<< std::to_string(vec[kI])<< std::endl;
+//			std::cout << "val: " << std::to_string(vec[kI]) << std::endl;
 		}
-		std::cout << "description is: " << desc << std::endl;
+//		std::cout << "description is: " << desc << std::endl;
 		if (!desc.empty()) {
 			desc.pop_back();
 			desc += '\n';
@@ -63,6 +63,6 @@ std::string MatrixProblem::toString() {
 	}
 	desc += std::to_string(this->init->GetX()) + ',' + std::to_string(this->init->GetY()) + '\n';
 	desc += std::to_string(this->goal->GetX()) + ',' + std::to_string(this->goal->GetY()) + '\n';
-	std::cout << "description is: " << desc << std::endl;
+//	std::cout << "description is: " << desc << std::endl;
 	return desc;
 }

@@ -10,35 +10,39 @@
 #include <fstream>
 #include <iostream>
 template<class Problem, class Solution>
-class FileCacheManager : public CacheManager<Problem, Solution> {
+ class FileCacheManager : public CacheManager<std::string , std::string> {
 
 //	std::unordered_map<Problem, std::string> *cache;
  public:
-	Solution get_solution(Problem p) override {
+	std::string get_solution(std::string p) override {
 //		if(this->cache->find(p) != this->cache->end()){
 		std::ifstream solutionFile;
-		solutionFile.open("../" + std::to_string(std::hash<Problem>()(p)) + ".txt");
+		solutionFile.open("../" + std::to_string(std::hash<std::string>()(p)) + ".txt");
 		if (!solutionFile) {
 			std::cerr << "the file wasn't able to open - it doesn't exist maybe" << std::endl;
 		}
-		Solution s;
-		solutionFile.read((char *) &s, sizeof(s));
+		std::string s;
+		std::string line;
+		while (std::getline(solutionFile, line)){
+			s += line;
+		}
+//		solutionFile.((char *) &s, sizeof(s));
 		solutionFile.close();
 		return s;
 	}
-	void insert(Problem p, Solution s) override {
+	void insert(std::string p, std::string s) override {
 		std::ofstream solutionFile;
-		solutionFile.open("../" + std::to_string(std::hash<Problem>()(p)) + ".txt", std::ios::trunc); // TODO: make sure you need trunc or if there is a different flag to use
+		solutionFile.open("../" + std::to_string(std::hash<std::string>()(p)) + ".txt", std::ios::trunc); // TODO: make sure you need trunc or if there is a different flag to use
 		if (!solutionFile) {
 			std::cerr << "the file wasn't able to open - it doesn't exist maybe" << std::endl;
 		}
-		solutionFile.write((char *) &s, sizeof(s));
+		solutionFile << s;
 		solutionFile.close();
 	}
 
-	bool is_exist(Problem p) override {
+	bool is_exist(std::string p) override {
 		std::ifstream solutionFile;
-		solutionFile.open("../" + std::to_string(std::hash<Problem>()(p)) + ".txt");
+		solutionFile.open("../" + std::to_string(std::hash<std::string>()(p)) + ".txt");
 		return !(!solutionFile);
 	}
 
