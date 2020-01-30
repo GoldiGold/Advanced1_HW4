@@ -18,7 +18,6 @@ class MySerialServer : public Server {
 	MySerialServer();
 	int open(int port, ClientHandler* c) override ;
 	int stop() override ;
-	void closing_func(int signo);
 };
 
 #endif //ADVANCED1_HW4__MYSERIALSERVER_H_

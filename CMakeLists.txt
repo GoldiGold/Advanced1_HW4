@@ -37,4 +37,4 @@ add_executable(Advanced1_HW4
         MyTestClientHandler.h
         Server.h
         ShitSolver.h
-        ShitSolver.cpp)
+        ShitSolver.cpp MyParallelServer.cpp MyParallelServer.h)

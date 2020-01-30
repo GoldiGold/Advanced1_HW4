@@ -3,6 +3,7 @@
 //
 
 #include "MySerialServer.h"
+#include "MyClientHandler.h"
 
 static void printSeconds() {
 	std::cout << "entered the thread" << std::endl;
@@ -93,6 +94,7 @@ int MySerialServer::open(int port, ClientHandler *c) {
 		std::cout << "we accepted a client" << std::endl;
 		std::cout << "handling client" << std::endl;
 		c->handleClient(new_socket);
+//		new std::thread (&MyClientHandler::handleClient, c, new_socket); TODO: this is something we need for the parallel
 		std::cout << "FINISHED handling client" << std::endl;
 		std::cout << "closed socket" << std::endl;
 
@@ -114,6 +116,3 @@ int MySerialServer::stop() {
 	return 1;
 }
 
-void MySerialServer::closing_func(int signo){
-	this->stop();
-}

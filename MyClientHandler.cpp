@@ -82,6 +82,8 @@ int MyClientHandler::handleClient(int sockfd) {
 			desc_solution += directions->at(c);
 			desc_solution += ',';
 		}
+		desc_solution.pop_back();
+		desc_solution += '\n';
 		this->cache_manager->insert(matrix_desc, desc_solution);
 	}
 	send(sockfd, desc_solution.c_str(), desc_solution.length(), 0);
