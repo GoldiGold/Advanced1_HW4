@@ -9,7 +9,7 @@
 #include "Searcher.h"
 #include <unordered_map>
 #include "MyStack.h"
-
+//like BFS with stack instaed of queue
 class DepthFirstSearch: public Searcher{
   MyStack* openList;
   std::unordered_map<std::string, State*>* closed;
