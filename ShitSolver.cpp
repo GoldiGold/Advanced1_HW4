@@ -4,7 +4,7 @@
 
 #include "ShitSolver.h"
 std::string ShitSolver::solve(std::string p) {
-	std::cout << "we solved some shit" << std::endl;
+//	std::cout << "we solved some shit" << std::endl;
 
 	std::string ret = p;//"tihs";
 	int len = p.length();

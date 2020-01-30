@@ -4,15 +4,15 @@
 
 #include "MyParallelServer.h"
 
-static void printSeconds() {
-	std::cout << "entered the thread" << std::endl;
-	int seconds = 1;
-	while (true) {
-		sleep(1);
-		std::cout << "a second passed:" << seconds << std::endl;
-		++seconds;
-	}
-}
+//static void printSeconds() {
+//	std::cout << "entered the thread" << std::endl;
+//	int seconds = 1;
+//	while (true) {
+//		sleep(1);
+//		std::cout << "a second passed:" << seconds << std::endl;
+//		++seconds;
+//	}
+//}
 
 MyParallelServer::MyParallelServer() {
 //	this->clients_queue = new std::queue<int>;
@@ -41,17 +41,12 @@ int MyParallelServer::open(int port, ClientHandler *c) {
 	}
 
 	struct timeval tv;
-	tv.tv_sec = 60; // TODO: change to 120 seconds
+	tv.tv_sec = 120;
 	tv.tv_usec = 0;
 	setsockopt(this->sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *) &tv, sizeof(tv));
-	std::cout << "about to accept shit..." << std::endl;
+//	std::cout << "about to accept shit..." << std::endl;
 
-	/* TODO: THERE IS NO NEED FOR A QUEUE OF CLIENTS BECAUSE THE ACCEPT WILL ACCEPT ONLY AFTER FINISHING DEALING WITH THE PREVIOUS
-	 * TODO: CLIENT WE GOT THROUGH THE ACCEPT
-	 *
-	 * TODO: NEED TO FIND WHERE TO PUT THE STOP - HOW TO KNOW IF NO CLIENT WANTS TO JOIN.
-	 */
-	std::cout << "here we go accepting" << std::endl;
+//	std::cout << "here we go accepting" << std::endl;
 //	std::thread seconds(printSeconds);
 //	seconds.detach();
 
@@ -93,10 +88,10 @@ int MyParallelServer::open(int port, ClientHandler *c) {
 		std::cout << "we accepted a client" << std::endl;
 		std::cout << "handling client" << std::endl;
 		auto new_client_handler = c->clone();
-//		threadS.push_back(new std::thread (&MyClientHandler::handleClient, new_client_handler, new_socket)); // TODO: this is something we need for the parallel<
+//		threadS.push_back(new std::thread (&MyClientHandler::handleClient, new_client_handler, new_socket));
 		threadS.push_back(new std::thread([new_client_handler, new_socket]() {
 		  new_client_handler->handleClient(new_socket);
-		})); // TODO: this is something we need for the parallel
+		}));
 
 
 	}
@@ -108,11 +103,9 @@ int MyParallelServer::open(int port, ClientHandler *c) {
       std::cout << "closed socket" << std::endl;
 	}
 
-	std::cout << "SHIT" << std::endl;
+//	std::cout << "SHIT" << std::endl;
 	std::cout << "didn't accept" << std::endl;
 	this->stop();
-////	TODO: CHECK IF YOU NEED TO OPEN A THREAD FOR SOMETHING, IF YES THEN FOR WHAT' AND WHAT DO YOU DO WITH THE
-//// 	TODO: CLIENT_HANDLER IN THIS FUNCTION. in the end need to close the client's new socket.
 //	std::thread openServer(acceptClient, this);
 //	openServer.detach();
 	return 1;

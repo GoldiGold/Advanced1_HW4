@@ -34,7 +34,7 @@ class FileCacheManager : public CacheManager<std::string, std::string> {
 	void insert(std::string p, std::string s) override {
 		std::ofstream solutionFile;
 		solutionFile.open("../" + std::to_string(std::hash<std::string>()(p)) + ".txt",
-						  std::ios::trunc); // TODO: make sure you need trunc or if there is a different flag to use
+						  std::ios::trunc);
 		if (!solutionFile) {
 			std::cerr << "the file wasn't able to open - it doesn't exist maybe" << std::endl;
 		}

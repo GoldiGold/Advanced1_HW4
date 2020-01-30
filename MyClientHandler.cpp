@@ -33,7 +33,6 @@ int MyClientHandler::handleClient(int sockfd) {
 //	int counter = 0;
 //	int i = 0;
 	do {
-		// TODO: UNDERSTAND WHY WE AIN'T GETTING ANY VALUES FROM THE CLIENT (MAYBE SOMETHING WITH THE INCLUDED HEADERS)
 		ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
 //		std::cout <<"buffer data:" << buffer << std::endl;
 		t = buffer;
@@ -76,7 +75,6 @@ int MyClientHandler::handleClient(int sockfd) {
 	std::string matrix_desc = mat_problem->toString();
 	std::string desc_solution;
 
-	// TODO: FIX THE INPUT FOR THE INSERTING OF TO THE CACHE - WE SEND A VECTOR OF VECTORS AND WE NEED TO SEND A STRING.
 	if (this->cache_manager->is_exist(matrix_desc)) {
 		std::cout << "exist already" << std::endl;
 		desc_solution = this->cache_manager->get_solution(matrix_desc);
@@ -103,7 +101,6 @@ int MyClientHandler::handleClient(int sockfd) {
 //	this->cache_manager->insert("end", sol);
 //		std::vector<std::string> lines = split(problem, '\n');
 
-// TODO: REMEMBER THAT THE LAST TWO LINES ARE OF THE START-CO AND END-CO.
 
 //	std::cout << "the amount of lines is: " << counter << std::endl;
 //	send(sockfd, "hello", strlen("hello"), 0);
@@ -126,45 +123,45 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 	int line_index = 0;
 	std::vector<std::string> temp;
 	for (const std::string &line: sub_lines) {
-        std::cout<< "line:" << line << std::endl;
+//        std::cout<< "line:" << line << std::endl;
 		temp = split(line, ',');
 		if (temp.size() == 2) {
 			if (start_index == -1) {// the second check is the case that the start index hasn't changed
 				start_index = line_index;
-				std::cout << "start: " << start_index;
+//				std::cout << "start: " << start_index;
 			} else if (end_index == -1) {
 				end_index = line_index;
-				std::cout << "end: " << end_index;
+//				std::cout << "end: " << end_index;
 			}
 		}
 		mat.push_back(temp);
 		++line_index;
 		temp.clear();
 	}
-	int start_x, start_y, end_x, end_y;
+	int start_x = 0 , start_y = 0 , end_x = 0 , end_y = 0;
 	try {
        start_x = stoi(mat[start_index][0]);
     } catch (...){
-	  std::cout<< "start x error" << std::endl;
+	  std::cerr<< "start x error" << std::endl;
 	}
 	try{
 	start_y = stoi(mat[start_index][1]);
     } catch (...){
-      std::cout<< "start y error" << std::endl;
+      std::cerr<< "start y error" << std::endl;
     }
 	try{
 	end_x = stoi(mat[end_index][0]);
     } catch (...){
-      std::cout<< "end x error" << std::endl;
+      std::cerr<< "end x error" << std::endl;
     }
 	try{
 	end_y = stoi(mat[end_index][1]);
     } catch (...){
-      std::cout<< "end y error" << std::endl;
+      std::cerr<< "end y error" << std::endl;
     }
 	mat.erase(mat.begin() + start_index, mat.end());
 
-	std::cout << "size:::: " << mat.size() << std::endl;
+//	std::cout << "size:::: " << mat.size() << std::endl;
 	std::vector<std::vector<int>>* matrix = new std::vector<std::vector<int>>;
 	std::vector<int> temp_int;
 	matrix->reserve(mat.size());
@@ -180,7 +177,7 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 		matrix->push_back(temp_int);
 		temp_int.clear();
 	}
-	std::cout << "size of matrix: " << matrix->size() << std::endl;
+//	std::cout << "size of matrix: " << matrix->size() << std::endl;
 	return new MatrixProblem(matrix, start_x, start_y, end_x, end_y);
 }
 

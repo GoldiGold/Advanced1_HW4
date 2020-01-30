@@ -50,7 +50,6 @@ class MyClientHandler : public ClientHandler {
 //		int counter = 0;
 //		int i = 0;
 //		do {
-//			// TODO: UNDERSTAND WHY WE AIN'T GETTING ANY VALUES FROM THE CLIENT (MAYBE SOMETHING WITH THE INCLUDED HEADERS)
 //			ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
 //			t = buffer;
 //			std::cout << buffer << std::endl;
@@ -78,7 +77,6 @@ class MyClientHandler : public ClientHandler {
 ////	this->cache_manager->insert("end", sol);
 ////		std::vector<std::string> lines = split(problem, '\n');
 //
-//// TODO: REMEMBER THAT THE LAST TWO LINES ARE OF THE START-CO AND END-CO.
 //
 //		std::cout << "the amount of lines is: " << counter << std::endl;
 //		send(sockfd, "hello", strlen("hello"), 0);
