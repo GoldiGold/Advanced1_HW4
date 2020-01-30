@@ -35,6 +35,7 @@ int MyClientHandler::handleClient(int sockfd) {
 	do {
 		// TODO: UNDERSTAND WHY WE AIN'T GETTING ANY VALUES FROM THE CLIENT (MAYBE SOMETHING WITH THE INCLUDED HEADERS)
 		ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
+		std::cout <<"buffer data:" << buffer << std::endl;
 		t = buffer;
 //		std::cout << buffer << std::endl;
 		problem += t;
@@ -47,7 +48,7 @@ int MyClientHandler::handleClient(int sockfd) {
 	int endIndex = problem.find("end");
 	problem.erase(endIndex, std::string::npos);
 	std::vector<std::string> sub_lines = split(problem, '\n');
-
+//	std::cout << "PROBLEM:\n" << problem <<std::endl;
 	int sizeee = sub_lines.size();
 	std::vector<int> index_to_erase;
 	int index = 0;
@@ -57,9 +58,10 @@ int MyClientHandler::handleClient(int sockfd) {
 			index_to_erase.push_back(index);
 		}
 	}
+
 	int amount_to_erase = index_to_erase.size();
 	for (int j = amount_to_erase - 1; j >= 0; --j) {
-//		std::cout << "index to erase:" << index_to_erase[j] << std::endl;
+//		std::cout <<  "index to erase:" << index_to_erase[j] << std::endl;
 //		std::cout << "the line is: " << sub_lines[index_to_erase[j]] << std::endl;
 		sub_lines.erase(sub_lines.begin() + index_to_erase[j]);
 	}
@@ -121,6 +123,7 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 	int line_index = 0;
 	std::vector<std::string> temp;
 	for (const std::string &line: sub_lines) {
+        std::cout<< "line:" << line << std::endl;
 		temp = split(line, ',');
 		if (temp.size() == 2) {
 			if (start_index == -1) {// the second check is the case that the start index hasn't changed
@@ -136,10 +139,27 @@ MatrixProblem *MyClientHandler::createMatProblem(const std::vector<std::string> 
 		temp.clear();
 	}
 
-	int start_x = stoi(mat[start_index][0]);
-	int start_y = stoi(mat[start_index][1]);
-	int end_x = stoi(mat[end_index][0]);
-	int end_y = stoi(mat[end_index][1]);
+	int start_x, start_y, end_x, end_y;
+	try {
+       start_x = stoi(mat[start_index][0]);
+    } catch (...){
+	  std::cout<< "start x error" << std::endl;
+	}
+	try{
+	start_y = stoi(mat[start_index][1]);
+    } catch (...){
+      std::cout<< "start y error" << std::endl;
+    }
+	try{
+	end_x = stoi(mat[end_index][0]);
+    } catch (...){
+      std::cout<< "end x error" << std::endl;
+    }
+	try{
+	end_y = stoi(mat[end_index][1]);
+    } catch (...){
+      std::cout<< "end y error" << std::endl;
+    }
 	mat.erase(mat.begin() + start_index, mat.end());
 
 //	for (const std::vector<std::string> &vec: mat) {

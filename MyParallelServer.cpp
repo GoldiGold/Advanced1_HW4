@@ -87,23 +87,25 @@ int MyParallelServer::open(int port, ClientHandler *c) {
 //				break;
 //		}
 //	}
-	std::vector<std::thread *> threadS;
+	std::list<std::thread *> threadS;
 	while ((new_socket = accept(this->sockfd, (struct sockaddr *) (&serv_addr), (socklen_t *) (&serv_addr))) != -1) {
 
 		std::cout << "we accepted a client" << std::endl;
 		std::cout << "handling client" << std::endl;
 		auto new_client_handler = c->clone();
-		//new std::thread (&MyClientHandler::handleClient, new_client_handler, new_socket); // TODO: this is something we need for the parallel
+//		threadS.push_back(new std::thread (&MyClientHandler::handleClient, new_client_handler, new_socket)); // TODO: this is something we need for the parallel<
 		threadS.push_back(new std::thread([new_client_handler, new_socket]() {
 		  new_client_handler->handleClient(new_socket);
 		})); // TODO: this is something we need for the parallel
 
-		std::cout << "FINISHED handling client" << std::endl;
-		std::cout << "closed socket" << std::endl;
+
 	}
 	for (auto &t: threadS) {
 		t->join();
+		threadS.remove(t);
 		delete t;
+      std::cout << "FINISHED handling client" << std::endl;
+      std::cout << "closed socket" << std::endl;
 	}
 
 	std::cout << "SHIT" << std::endl;
