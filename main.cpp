@@ -1,10 +1,11 @@
 #include <iostream>
 //#include <sys/time.h>
 #include "MySerialServer.h"
+#include "MyParallelServer.h"
 #include "MyClientHandler.h"
 #include "FileCacheManager.h"
 #include "ShitSolver.h"
-//#include "BreadthFirstSearch.h"
+#include "BreadthFirstSearch.h"
 #include "MyCmp.h"
 #include "SolverSearcher.h"
 #include "BestFirstSearch.h"
@@ -31,11 +32,11 @@ int main() {
 //	gettimeofday(&tvAfter, NULL);
 //	std::cout << "time ended: " << tvAfter.tv_sec << " i is : " << i << std::endl;
 
-	auto my_serial_server = new MySerialServer();
+	auto my_p_server = new MyParallelServer();
 	auto cache = new FileCacheManager<std::string, std::string>();
 	auto string_cache = new FileCacheManager<std::string, std::string>();
-	my_serial_server->open(5400, /*new MyTestClientHandler<std::string, std::string>(new ShitSolver(), string_cache)*/
-						   new MyClientHandler(new SolverSearcher(new BestFirstSearch<AStarCmp>()), cache))
+	my_p_server->open(5400, /*new MyTestClientHandler<std::string, std::string>(new ShitSolver(), string_cache)*/
+						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch()), cache))
 		/*new SolverSearcher(new BreadthFirstSearch()), cache))*/;
 
 //	std::list<int> q;
