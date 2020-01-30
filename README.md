@@ -12,16 +12,13 @@ g++ -std=c++14 *.cpp -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -o a.ou
 and in order to run:
 ./a.out
 
-The program can handle up to 10 clients in parallel. Each client sends to the program a matrix, a start position and a goal position. 
+The program can handle up to 10 clients in parallel. Each client sends to the program a matrix, a start position and a goal position.
+In the matrix -1 means inf. 
+In order to run BestFirstSearch we create BestFirstSearch<CostCmp> when CostCmp is a comparator by cost.
+In order to run A* we create BestFirstSearch<AStarCmp> when AStarCmp is a comparator by cost an heuristic.
 
-
-##Code File (code_file.txt) In this file you write yor commands for the simulator. In order to connect the simulator use in the begining of the code file this two commands: openDataServer(5400) connectControlClient("127.0.0.1",5402)
-
-We are connecting! Now we can use more commands: -Define variables that contains value, and can get and put values in the simulator -Print to the consule -Sleep for milliseconds -Use if and while commands and more...
-
-Good Luck!!!
-
-
-the problem represented with a string, then are transferred
+the problem represented with a string that sent from the, then are transferred
 into a vector of vectors, so we can use a the MatrixProblem and then solve them.
+
+The program return list of moves to the clients that takes from the start to the goal.
 
