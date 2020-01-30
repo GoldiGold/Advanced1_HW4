@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include "MyQueue.h"
 
+//very similar to the BesrFirstSearch unless of the non-priority queue
 class BreadthFirstSearch: public Searcher{
   MyQueue* openList;
   std::unordered_map<std::string, State*>* closed;
