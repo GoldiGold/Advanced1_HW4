@@ -37,7 +37,7 @@ add_executable(Advanced1_HW4
         MySerialServer.cpp
         MyTestClientHandler.h
         Server.h
-        ShitSolver.h
-        ShitSolver.cpp
+        StringReverser.h
+        StringReverser.cpp
         MyParallelServer.cpp
         MyParallelServer.h)

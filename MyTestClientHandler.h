@@ -24,14 +24,18 @@
 //	return tokens;
 //}
 
-template<class Problem, class Solution>
 class MyTestClientHandler : public ClientHandler {
  public:
-	Solver<Problem, Solution> *s;
-	CacheManager<Problem, Solution> *cm;
+	Solver<std::string, std::string> *s;
+	CacheManager<std::string, std::string> *cm;
 
  public:
-	MyTestClientHandler(Solver<Problem, Solution> *solver, CacheManager<Problem, Solution> *cache_manager){
+
+	MyTestClientHandler *clone() override {
+		return new MyTestClientHandler(this->s->clone(), this->cm->clone());
+	}
+	MyTestClientHandler(Solver<std::string, std::string> *solver,
+						CacheManager<std::string, std::string> *cache_manager) {
 		this->s = solver;
 		this->cm = cache_manager;
 	}
@@ -45,20 +49,36 @@ class MyTestClientHandler : public ClientHandler {
 		do {
 			ssize_t size = read(sockfd, buffer, BUFFER_SIZE);
 			t = buffer;
-			std::cout << buffer << std::endl;
-			if (t.find('\n') != std::string::npos) {
-				++counter;
-			}
-			++i;
+//			std::cout << buffer << std::endl;
+//			if (t.find('\n') != std::string::npos) {
+//				++counter;
+//			}
+//			++i;
 //			sub_n = split(t, "\n");
-		} while (t.find("end") == std::string::npos);
-//		std::string sol = this->s->solve("end");
-//		this->cm->insert("end", sol);
+			if (t.find('\r') != std::string::npos) {
+				t = t.substr(0, t.find('\r'));
+			}
+			if (t.find('\n') != std::string::npos) {
+				t = t.substr(0, t.find('\n'));
+			}
 
-//		std::cout << "the amount of lines is: " << counter << std::endl;
-//		send(sockfd, "hello", strlen("hello"), 0);
-//		send(sockfd, sol.c_str(), sol.length(), 0);
-//		write(sockfd, sol.c_str(), ((size_t)sol.length()));
+			std::cout << "input from client: " << t << std::endl;
+
+			if (this->cm->is_exist(t)) {
+				std::string solution = this->cm->get_solution(t);
+				std::cout << "message to client: " << solution << std::endl;
+				solution += '\n';
+				send(sockfd, solution.c_str(), solution.length(), 0);
+				std::cout << "new problem" << std::endl;
+			} else {
+				std::string solution = this->s->solve(t);
+				std::cout << "message to client: " << solution << std::endl;
+				this->cm->insert(t, solution);
+				solution = solution.append("\n");
+				send(sockfd, solution.c_str(), solution.length(), 0);
+				std::cout << "solution exist" << std::endl;
+			}
+		} while (t.find("end") == std::string::npos);
 		std::cout << "message was sent" << std::endl;
 		close(sockfd);
 
