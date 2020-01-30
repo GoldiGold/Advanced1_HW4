@@ -12,39 +12,42 @@ DepthFirstSearch::DepthFirstSearch() {
 }
 
 
-std::list<char>* DepthFirstSearch::path(State* s){
-  using namespace std;
-  cost = s->GetCost();
-  auto l = new list<char>();
-  auto cf = s->GetCameFrom();
-  auto stmp = s;
-  auto x = stmp->GetX();
-  auto y = stmp->GetY();
-  while (cf != nullptr) {
-    x = stmp->GetX();
-    y = stmp->GetY();
-    auto cfx = cf->GetX();
-    auto cfy = cf->GetY();
-    if(cfx == x-1) {
-      l->push_front('d');
-    } else if(cfx == x+1) {
-      l->push_front('u');
-    } else if(cfy == y-1) {
-      l->push_front('r');
-    } else if(cfy == y+1) {
-      l->push_front('l');
-    } else {
-      throw "invalid step";
-    }
-    stmp = cf;
-    cf = cf->GetCameFrom();
-  }
-  return l;
+std::list<std::pair<char,int>>* DepthFirstSearch::path(State* s){
+	using namespace std;
+	cost = s->GetCost();
+	cout<<cost<<"\n";
+	auto l = new list<std::pair<char,int>>();
+	auto cf = s->GetCameFrom();
+	auto sTmp = s;
+
+	while (cf != nullptr) {
+		auto p = pair<char, int>();
+		p.second = (sTmp->GetCost());
+		auto x = sTmp->GetX();
+		auto y = sTmp->GetY();
+		auto cfx = cf->GetX();
+		auto cfy = cf->GetY();
+		if(cfx == x-1) {
+			p.first = 'd';
+		} else if(cfx == x+1) {
+			p.first = 'u';
+		} else if(cfy == y-1) {
+			p.first = 'r';
+		} else if(cfy == y+1) {
+			p.first = 'l';
+		} else {
+			throw "invalid step";
+		}
+		l->push_front(p);
+		sTmp = cf;
+		cf = cf->GetCameFrom();
+	}
+	return l;
 }
 
 
 
-std::list<char>* DepthFirstSearch::search(Searchable* searchable){
+std::list<std::pair<char,int>>* DepthFirstSearch::search(Searchable* searchable){
   using namespace std;
   this->openList = new MyStack();
   closed = new std::unordered_map<std::string, State*>();

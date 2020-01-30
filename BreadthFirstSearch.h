@@ -15,11 +15,11 @@ class BreadthFirstSearch: public Searcher{
   std::unordered_map<std::string, State*>* closed;
   int cost;
 
-  std::list<char>* path(State* s);
+  std::list<std::pair<char,int>>* path(State* s);
  public:
   BreadthFirstSearch();
   ~BreadthFirstSearch(){delete openList;}
-  std::list<char>* search(Searchable* searchable) override;
+  std::list<std::pair<char,int>>* search(Searchable* searchable) override;
   int GetCost() override {return cost;}
   int numberOfClosedNodes() override {return closed->size();}
 

@@ -77,9 +77,9 @@ int MyClientHandler::handleClient(int sockfd) {
 		desc_solution = this->cache_manager->get_solution(matrix_desc);
 	} else {
 		std::cout << "new problem" << std::endl;
-		std::list<char> *solution = solver->solve(mat_problem);
-		for (char c : *solution) {
-			desc_solution += directions->at(c);
+		std::list<std::pair<char,int>> *solution = solver->solve(mat_problem);
+		for (auto p: *solution) {
+			desc_solution += directions->at(p.first) +"("+ std::to_string(p.second)+")";
 			desc_solution += ',';
 		}
 		desc_solution.pop_back();

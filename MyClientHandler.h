@@ -22,11 +22,11 @@
 class MyClientHandler : public ClientHandler {
  private:
 	std::unordered_map<char, std::string> *directions;
-	Solver<Searchable *, std::list<char> *> *solver;
+	Solver<Searchable *, std::list<std::pair<char,int>> *> *solver;
 	CacheManager<std::string , std::string> *cache_manager;
  public:
 
-	MyClientHandler(Solver<Searchable *, std::list<char> *> *sol,
+	MyClientHandler(Solver<Searchable *, std::list<std::pair<char,int>> *> *sol,
 					CacheManager<std::string, std::string> *cm) {
 		this->solver = sol;
 		this->cache_manager = cm;

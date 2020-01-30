@@ -17,25 +17,25 @@ std::list<State *> *MatrixProblem::GetPossibleStates(State *s) {
 	auto l = new std::list<State *>();
 	int x = s->GetX();
 	int y = s->GetY();
-	if (x > 0) {
+	if (x > 0 && matrix->at(x-1).at(y) != -1) {
 		auto s1 = new State(x - 1, y);
 		s1->SetCameFrom(s);
 		s1->SetCost(s->GetCost() + matrix->at(x - 1).at(y));
 		l->push_back(s1);
 	}
-	if (x < matrix->size() - 1) {
+	if (x < matrix->size() - 1 && matrix->at(x+1).at(y) != -1) {
 		auto s1 = new State(x + 1, y);
 		s1->SetCameFrom(s);
 		s1->SetCost(s->GetCost() + matrix->at(x + 1).at(y));
 		l->push_back(s1);
 	}
-	if (y > 0) {
+	if (y > 0 && matrix->at(x).at(y-1) != -1) {
 		auto s1 = new State(x, y - 1);
 		s1->SetCameFrom(s);
 		s1->SetCost(s->GetCost() + matrix->at(x).at(y - 1));
 		l->push_back(s1);
 	}
-	if (y < matrix->at(0).size() - 1) {
+	if (y < matrix->at(0).size() - 1 && matrix->at(x).at(y+1) != -1) {
 		auto s1 = new State(x, y + 1);
 		s1->SetCameFrom(s);
 		s1->SetCost(s->GetCost() + matrix->at(x).at(y + 1));

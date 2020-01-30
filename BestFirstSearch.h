@@ -17,11 +17,11 @@ class BestFirstSearch: public Searcher{
   std::unordered_map<std::string, State*>* closed;
   int cost;
 
-  std::list<char>* path(State* s);
+  std::list<std::pair<char,int>>* path(State* s);
  public:
   BestFirstSearch();
   ~BestFirstSearch(){delete openList;}
-  std::list<char>* search(Searchable* searchable) override;
+  std::list<std::pair<char,int>>* search(Searchable* searchable) override;
   int GetCost() override {return cost;}
   int numberOfClosedNodes() override{
     return closed->size();
@@ -37,32 +37,38 @@ BestFirstSearch<CMP>::BestFirstSearch() {
 }
 
 template<class CMP>
-std::list<char>* BestFirstSearch<CMP>::path(State* s){
+std::list<std::pair<char,int>>* BestFirstSearch<CMP>::path(State* s){
   using namespace std;
   cost = s->GetCost();
-  auto l = new list<char>();
+  cout<<cost<<"\n";
+  auto l = new list<std::pair<char,int>>();
   auto cf = s->GetCameFrom();
-  auto stmp = s;
-  auto x = stmp->GetX();
-  auto y = stmp->GetY();
+  auto sTmp = s;
+
   while (cf != nullptr) {
-    auto x = stmp->GetX();
-    auto y = stmp->GetY();
+	  auto p = pair<char, int>();
+	  p.second = (sTmp->GetCost());
+    auto x = sTmp->GetX();
+    auto y = sTmp->GetY();
     auto cfx = cf->GetX();
     auto cfy = cf->GetY();
     if(cfx == x-1) {
-      l->push_front('d');
+    	p.first = 'd';
     } else if(cfx == x+1) {
-      l->push_front('u');
+		p.first = 'u';
     } else if(cfy == y-1) {
-      l->push_front('r');
+		p.first = 'r';
     } else if(cfy == y+1) {
-      l->push_front('l');
+		p.first = 'l';
     } else {
       throw "invalid step";
     }
-    stmp = cf;
+    l->push_front(p);
+    sTmp = cf;
     cf = cf->GetCameFrom();
+//    if(cf== nullptr){
+//    	p.second+=sTmp.
+//    }
   }
   return l;
 }
@@ -70,7 +76,7 @@ std::list<char>* BestFirstSearch<CMP>::path(State* s){
 
 
 template<class CMP>
-std::list<char>* BestFirstSearch<CMP>::search(Searchable* searchable){
+std::list<std::pair<char,int>>* BestFirstSearch<CMP>::search(Searchable* searchable){
   using namespace std;
   this->openList = new MyPriorityQueue<CMP>();
   closed = new std::unordered_map<std::string, State*>();

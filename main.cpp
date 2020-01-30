@@ -4,7 +4,7 @@
 #include "MyClientHandler.h"
 #include "FileCacheManager.h"
 #include "ShitSolver.h"
-#include "BreadthFirstSearch.h"
+//#include "BreadthFirstSearch.h"
 #include "MyCmp.h"
 #include "SolverSearcher.h"
 #include "BestFirstSearch.h"
@@ -35,7 +35,7 @@ int main() {
 	auto cache = new FileCacheManager<std::string, std::string>();
 	auto string_cache = new FileCacheManager<std::string, std::string>();
 	my_serial_server->open(5400, /*new MyTestClientHandler<std::string, std::string>(new ShitSolver(), string_cache)*/
-						   new MyClientHandler(new SolverSearcher(new BreadthFirstSearch()), cache))
+						   new MyClientHandler(new SolverSearcher(new BestFirstSearch<AStarCmp>()), cache))
 		/*new SolverSearcher(new BreadthFirstSearch()), cache))*/;
 
 //	std::list<int> q;

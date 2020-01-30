@@ -8,10 +8,10 @@
 #include <list>
 #include "Searchable.h"
 //#include "Solver.h"
-// public Solver<Searchable*, std::list<char>*>
+// public Solver<Searchable*, std::list<std::pair<char,int>>*>
 class Searcher{
  public:
-  virtual std::list<char>* search(Searchable* searchable) = 0;
+  virtual std::list<std::pair<char,int>>* search(Searchable* searchable) = 0;
   virtual int numberOfClosedNodes() = 0;
   virtual int GetCost() = 0;
 };
