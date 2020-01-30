@@ -10,9 +10,10 @@
 #include <unordered_map>
 #include <list>
 
+//wrapping class to std::queue
 class MyQueue{
   std::queue<State*>* q;
-  std::unordered_map<std::string, State*>* m;
+  std::unordered_map<std::string, State*>* m;//map of the states in the queue
 
 
  public:
