@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <list>
 
+//wrapping class to std::stack
 class MyStack{
   std::stack<State*>* q;
   std::unordered_map<std::string, State*>* m;
