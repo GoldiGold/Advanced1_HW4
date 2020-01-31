@@ -1,0 +1,364 @@
+commit 56b17584cb666b113cea74bd8c3c340841547bba
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 23:47:59 2020 +0200
+
+    CG 30.1  - 23:47 everything works I hope so
+
+commit cad9339ccf1a3d9f5344ed08c4dc63af1efffea4
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:47:02 2020 +0200
+
+    Update State.h
+
+commit 0ef3b50798a190c0e03502263044ab84da0acbf1
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:44:48 2020 +0200
+
+    Update MyStack.h
+
+commit 33e7271753192fb0d410731485f71b16dad3075b
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:42:59 2020 +0200
+
+    Update MyQueue.h
+
+commit 27bc81a8ace0453cf0e0fccbd1edb572716a864d
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:41:31 2020 +0200
+
+    Update MyPriorityQueue.h
+
+commit e2ec4226cec5e5dbe556b33607e819448a5d8aa5
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:39:23 2020 +0200
+
+    Update MatrixProblem.h
+
+commit 6ff93fad950e680b9bafaed6406b0affae3c67c3
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:37:23 2020 +0200
+
+    Update DepthFirstSearch.h
+
+commit acfdaa4ce5c08b5c1804e579d3a6c792b8b8e5a5
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:36:15 2020 +0200
+
+    Update CostCmp.h
+
+commit c213c5cea1d77eaa50ed7be399571ddf382b8da1
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:35:26 2020 +0200
+
+    Update BreadthFirstSearch.h
+
+commit 662fdb92a2ca75785f724e8e9dc2f3c91e6848a1
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:29:58 2020 +0200
+
+    Update BestFirstSearch.h
+
+commit 78502588b49e0943c45c462f6933d84b2e46e7a7
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:26:20 2020 +0200
+
+    Update BestFirstSearch.cpp
+
+commit c1668b94bbacfc8bd447ddb3db654671d2a35b1e
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 23:25:20 2020 +0200
+
+    Update AStarCmp.h
+
+commit 72ad1bc3a59b80c3b4f72887b94d781ebf4f9c5c
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 23:20:09 2020 +0200
+
+    CG 30.1  - 23:01 everything works?
+
+commit dfe476072400b1bd77ebd59f00e0abe86ceccc04
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 23:03:25 2020 +0200
+
+    CG 30.1  - 23:01 everything works?
+
+commit 4db9526c5d8ecaac274a0909fc84ab7a1b517a84
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 22:17:14 2020 +0200
+
+    YST 30.1  - 22:16 everything works
+
+commit 30be66b381d7c10b78a8fe1018b99bfe44e04ac1
+Merge: 1cf3d7b 6f10311
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 22:13:00 2020 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 1cf3d7b1c200d244cf998744604ca3a9e649ae92
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 22:12:46 2020 +0200
+
+    YST 30.1  - 22:11 everything works
+
+commit 6f10311bde962eaf9a341e265d0f3e6147ab9a16
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 21:55:43 2020 +0200
+
+    YST 30/1 21:55
+
+commit 6f23730ff26fd99afe6ed5f1c5cf7e9a13781589
+Merge: 745088d 11cbaf0
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 21:10:53 2020 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       main.cpp
+
+commit 745088d4b59275d4256c6d3ae43e86a649692301
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 21:09:43 2020 +0200
+
+    YST 30.1  - 21:05 fixed the algorithms
+
+commit 11cbaf0d5cc661cf26d9ed7f3ea7bae898f4587c
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Thu Jan 30 21:03:09 2020 +0200
+
+    cg 30.1 21:02
+
+commit 3b5223ec6277ce6857937d559753273ffb9203f7
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 18:39:36 2020 +0200
+
+    CG 30.1  - 18:38 added the parallel
+
+commit 52942a3d6afcce7cb0bd26547ab5099157d2f7b5
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 17:06:07 2020 +0200
+
+    CG 30.1  - 17:04 added the parallel for checking
+
+commit fc605e388f296bafa4a57f575505fe990d157155
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 16:42:16 2020 +0200
+
+    CG 30.1 16:39 - added the parallel for checking
+
+commit 07e3ddc9d1fc2dfaecb8294bdd25109d782a4211
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 15:10:39 2020 +0200
+
+    CG 30.1 14:05 - everything works, only need the parallel
+
+commit a797906fead64b714730dc4bf8cde45e0dd92db0
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 14:06:28 2020 +0200
+
+    CG 30.1 14:05 - a bit of a problem with the printing
+
+commit 703c53fad8fd8796635adabd59f2aec2c4d422ac
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 00:34:14 2020 +0200
+
+    CG 30.1  00:33 - added inserting to cache but need a fix
+
+commit 0835630472d2b035334e176ce7de21f2b49b91b1
+Author: chen goldi <17chen07@gmail.com>
+Date:   Thu Jan 30 00:06:22 2020 +0200
+
+    CG 30.1  00:05 - added sending to client
+
+commit 9fb67fcda62b1d65d8c12e6acc070cdfab425578
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 23:59:24 2020 +0200
+
+    CG 29.11 23:59 - main supposed to be fixed
+
+commit 8fd64ebcf5157af0091c99f76bfd0da44c1321b0
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 23:52:31 2020 +0200
+
+    CG 29.11 23:52 - mainly focused on the MyClientHandler
+
+commit 7d76fc16c99124ebb8b449748b3f236f9d51f7ce
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 23:32:35 2020 +0200
+
+    CG 29.11 23:31 - mainly focused on the MyClientHandler
+
+commit bd3ca0fa506112075fd533186da92738c9c76fe8
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 19:12:31 2020 +0200
+
+    CG 29.11 19:09 - changed the added functions in the solver
+
+commit b71bf4d00c420a9c3c49b91a98bbb8fb1c03df98
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 14:08:57 2020 +0200
+
+    CG 29.11 14:08 - there was a problem in the BreadthFS that it didn't override a function so i fixed it too
+
+commit 6a7525d33fa82afc8ec50bbad5cc198fbbd30220
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 14:06:01 2020 +0200
+
+    CG 29.11 14:04 - there was a problem in the BreadthFS that it didn't override a function so i fixed it too
+
+commit 2ff0427dfa5442d2c3a5ab5936b0d54f00157c17
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Wed Jan 29 13:15:10 2020 +0200
+
+    29/1 13:14
+
+commit fff5d6c0a231e7a80db57bdab62d09e2e7783e04
+Author: chen goldi <17chen07@gmail.com>
+Date:   Wed Jan 29 01:54:25 2020 +0200
+
+    CG 29.11 1:52
+
+commit 94876f2379bb416587953ec39477b0ea7e5799fa
+Author: chen goldi <17chen07@gmail.com>
+Date:   Tue Jan 28 17:43:01 2020 +0200
+
+    CG 28.11 17:42
+
+commit 2b4713f9ff1df1bf2f227c02220128e0bd756efa
+Author: chen goldi <17chen07@gmail.com>
+Date:   Tue Jan 28 17:39:56 2020 +0200
+
+    CG 28.11 17:35
+
+commit 4bcb3d976b10e7b2939f5cbbdf22a1d312833507
+Merge: a04650d dac02c2
+Author: chen goldi <17chen07@gmail.com>
+Date:   Tue Jan 28 17:39:12 2020 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       CMakeLists.txt
+
+commit a04650d4edfb826e1338946191d7835b99ac5976
+Author: chen goldi <17chen07@gmail.com>
+Date:   Tue Jan 28 17:36:10 2020 +0200
+
+    CG 28.11 17:35
+
+commit dac02c2be9ff85ed416076bbb881a598e5a518b8
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Tue Jan 28 17:09:17 2020 +0200
+
+    YST 28/1 17:08
+
+commit 3f6e7489c91aafc1494e01e8d1e42a94582c07c4
+Author: chen goldi <17chen07@gmail.com>
+Date:   Tue Jan 28 02:27:42 2020 +0200
+
+    CG 28.11 2:27
+
+commit d72996116bd94387162d4b40e80c644a3265c6ba
+Author: chen goldi <17chen07@gmail.com>
+Date:   Tue Jan 28 00:37:01 2020 +0200
+
+    CG 28.11 0:36
+
+commit d6704ae669234a942a5f81468426c2b3d61a1f8c
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 23:21:25 2020 +0200
+
+    CG 27.11 18:55 fixed the timeout and received a message from the client.
+
+commit c7aea15436250ae19d6746bd454b2df5adc63b2e
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Mon Jan 27 22:36:35 2020 +0200
+
+    27/1 22:36
+
+commit 35ca48d9f907a47d4cddef470fa7931f3ea83a05
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 20:37:44 2020 +0200
+
+    CG 27.11 18:55 fixed the timeout and received a message from the client.
+
+commit e0ef5697455ea461abd9a1c018f7dc54d66bffc2
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Mon Jan 27 19:42:33 2020 +0200
+
+    27/1 19:42
+
+commit d709595938e984e391f06551bdd669a97b3655c7
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 18:56:45 2020 +0200
+
+    CG 27.11 18:55 trying to make the timeout
+
+commit fa6bf9dfbf8a40607ab291f1567af3a3028acd40
+Merge: fcb13c1 014487a
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 15:40:27 2020 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit fcb13c1a6debf1b4760a4a86998aad2318fa93c7
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 15:40:06 2020 +0200
+
+    CG 27.11 15:39 no linker problem
+
+commit 014487abfdbf99f320293eba1f295ae88fdef526
+Author: yoavst <48022265+213489628@users.noreply.github.com>
+Date:   Mon Jan 27 13:13:06 2020 +0200
+
+    27/1 13:12
+
+commit efb2cce2d35f67bea854575ab15a9f553f941e3b
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 03:00:09 2020 +0200
+
+    created the basic classes for the first part of the ex - part 5
+    still has a linker problem
+
+commit 142ed18569ff8a0a3df987f9bf2f2982a68300de
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 02:42:34 2020 +0200
+
+    created the basic classes for the first part of the ex - part 4
+
+commit b9176b0d82729686bae7282a70638e6b3701948e
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 01:54:13 2020 +0200
+
+    created the basic classes for the first part of the ex - part 3
+
+commit 5656b0360515fc959af932a3a2ac9bb3e9526080
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 01:39:35 2020 +0200
+
+    created the basic classes for the first part of the ex - part 2
+
+commit f4dd05aafaab2ac3354f9d1450a03035340243b5
+Author: chen goldi <17chen07@gmail.com>
+Date:   Mon Jan 27 01:37:23 2020 +0200
+
+    created the basic classes for the first part of the ex
+
+commit e1034a7e2f9b1743ce1144b9c288fd6d61d5d49e
+Author: GoldiGold <59021835+GoldiGold@users.noreply.github.com>
+Date:   Sat Jan 25 14:06:56 2020 +0200
+
+    Create README.md
+
+commit bde48544f064652b3617c24736ec5f1bd0babdab
+Author: chen goldi <17chen07@gmail.com>
+Date:   Sat Jan 25 14:05:55 2020 +0200
+
+    second commit
+
+commit 94b3bb0ba16c0c7d20f1c348f0d445489a64d649
+Author: chen goldi <17chen07@gmail.com>
+Date:   Sat Jan 25 14:03:06 2020 +0200
+
+    Initial commit
