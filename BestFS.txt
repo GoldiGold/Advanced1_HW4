@@ -1,0 +1,38 @@
+matrix 1:
+Down(145),Down(156),Down(185),Right(187),Right(209),Down(230),Right(249),Down(329),Down(356),Right(392),Right(397),Right(443),Right(472),Right(485),Down(528),Down(582),Down(676),Right(715)
+
+
+matrix 2:
+Down(181),Down(190),Right(217),Down(246),Right(249),Right(268),Down(323),Down(379),Down(400),Down(404),Right(447),Right(510),Right(523),Right(561),Right(567),Right(607),Right(611),Right(629),Down(654),Down(658),Down(659),Down(717),Right(741),Right(778),Down(808),Down(903)
+
+
+matrix 3:
+Down(85),Right(94),Right(130),Down(135),Down(160),Right(245),Down(249),Down(303),Down(311),Right(364),Down(367),Right(400),Down(404),Down(442),Down(442),Down(474),Down(531),Right(545),Right(613),Right(618),Right(676),Right(688),Right(774),Right(774),Right(820),Right(846),Down(860),Right(915),Right(927),Down(983),Down(990),Down(1060),Down(1081),Right(1138)
+
+
+matrix 4:
+Down(92),Down(110),Right(115),Right(178),Right(227),Right(271),Right(282),Right(287),Right(321),Down(395),Right(409),Down(419),Right(437),Down(443),Down(464),Down(499),Right(531),Right(535),Down(582),Down(597),Down(620),Right(707),Right(738),Right(770),Right(792),Down(817),Right(821),Right(843),Down(925),Right(946),Down(982),Down(1009),Right(1035),Down(1101),Down(1146),Right(1146),Down(1198),Down(1285),Down(1289),Down(1341),Right(1362),Down(1395)
+
+
+matrix 5:
+Down(106),Right(125),Down(182),Down(184),Down(227),Down(242),Down(246),Down(267),Right(289),Right(294),Right(337),Up(371),Right(390),Right(405),Right(440),Down(468),Down(522),Right(545),Down(588),Down(627),Right(629),Right(642),Down(645),Down(652),Down(691),Right(695),Right(760),Right(846),Right(848),Down(868),Down(880),Right(939),Right(1016),Right(1016),Right(1069),Down(1069),Down(1097),Down(1105),Down(1107),Right(1188),Down(1221),Right(1260),Down(1306),Right(1313),Down(1348),Down(1368),Right(1425),Down(1436),Down(1448),Right(1457),Right(1512),Right(1559)
+
+
+matrix 6:
+Right(120),Right(154),Down(179),Right(273),Right(290),Right(348),Right(384),Down(389),Right(399),Right(400),Down(454),Right(487),Right(494),Down(502),Down(559),Down(600),Right(621),Right(632),Down(638),Down(640),Right(648),Right(678),Right(729),Right(754),Down(787),Right(789),Down(798),Right(836),Right(836),Down(846),Right(911),Right(943),Right(992),Right(999),Down(1030),Right(1073),Right(1085),Right(1092),Down(1143),Down(1148),Down(1190),Right(1224),Down(1243),Down(1243),Down(1312),Down(1349),Down(1369),Down(1370),Down(1377),Down(1415),Down(1481),Down(1485),Down(1516),Right(1516),Right(1538),Down(1588),Down(1615),Down(1701)
+
+
+matrix 7:
+Down(31),Down(90),Down(94),Right(99),Down(151),Down(197),Down(227),Down(227),Right(234),Right(281),Down(317),Right(341),Right(350),Down(388),Down(433),Right(455),Down(457),Down(529),Down(547),Down(562),Right(574),Right(582),Down(610),Right(636),Down(653),Right(657),Right(664),Down(729),Right(753),Down(771),Down(811),Right(826),Right(907),Right(940),Down(942),Right(991),Right(1016),Right(1040),Down(1069),Down(1116),Right(1117),Right(1195),Right(1203),Right(1290),Right(1294),Down(1309),Right(1318),Down(1344),Right(1363),Down(1366),Down(1406),Right(1440),Down(1482),Right(1492),Down(1533),Right(1554),Right(1557),Right(1573),Down(1596),Down(1597),Down(1623),Down(1649),Right(1657),Right(1659),Down(1696),Right(1721)
+
+
+matrix 8:
+Right(128),Right(164),Right(179),Right(245),Right(260),Down(262),Down(343),Down(357),Down(374),Down(383),Down(432),Down(468),Down(493),Down(499),Down(506),Down(534),Down(543),Down(600),Down(625),Down(644),Right(678),Down(687),Right(696),Right(715),Down(720),Down(729),Down(801),Right(806),Down(827),Down(845),Down(851),Right(911),Down(933),Down(949),Right(957),Right(962),Right(985),Right(1007),Down(1025),Right(1040),Right(1066),Down(1075),Right(1091),Down(1101),Right(1170),Right(1210),Right(1210),Down(1236),Right(1291),Down(1321),Right(1363),Right(1372),Down(1400),Down(1430),Right(1448),Right(1479),Down(1484),Down(1525),Right(1544),Right(1586),Right(1588),Right(1644),Right(1659),Right(1680),Right(1747),Right(1784),Right(1814),Right(1846),Down(1851),Right(1889),Right(1898),Down(1955),Down(1993),Down(2024)
+
+
+matrix 9:
+Right(129),Right(152),Right(219),Right(279),Down(311),Right(338),Right(346),Down(380),Right(407),Right(429),Right(475),Right(504),Right(528),Right(533),Right(552),Right(606),Right(674),Right(678),Down(711),Down(719),Right(768),Right(776),Down(850),Down(877),Down(878),Down(885),Right(895),Right(905),Right(1001),Right(1028),Right(1035),Right(1064),Down(1129),Down(1166),Down(1169),Down(1193),Right(1218),Right(1262),Down(1264),Down(1359),Down(1361),Down(1405),Down(1430),Right(1433),Right(1455),Down(1506),Right(1510),Down(1543),Down(1554),Right(1566),Down(1575),Down(1588),Down(1639),Right(1689),Down(1705),Down(1766),Down(1824),Down(1844),Down(1887),Down(1889),Down(1914),Right(1954),Down(1972),Down(2013),Right(2036),Down(2040),Right(2044),Down(2059),Down(2103),Down(2159),Down(2223),Down(2248),Right(2250),Down(2302),Right(2314),Right(2358),Down(2368),Right(2375),Right(2414),Down(2437),Right(2457),Right(2483)
+
+
+matrix 10:
+Right(79),Right(104),Down(130),Right(133),Down(161),Right(204),Down(231),Down(245),Down(263),Right(291),Down(295),Down(322),Down(406),Down(406),Right(422),Right(447),Down(447),Right(452),Right(457),Down(457),Right(461),Right(488),Right(579),Right(639),Right(643),Down(656),Right(656),Down(669),Down(734),Down(734),Down(756),Down(776),Left(776),Down(788),Down(793),Down(794),Right(818),Down(857),Down(873),Right(879),Right(968),Down(1047),Right(1053),Right(1122),Down(1125),Down(1161),Down(1191),Down(1221),Down(1231),Right(1247),Right(1253),Down(1264),Down(1300),Down(1331),Down(1348),Right(1429),Right(1453),Down(1462),Down(1468),Right(1536),Right(1550),Right(1555),Right(1561),Down(1577),Right(1598),Right(1628),Right(1655),Right(1676),Down(1681),Down(1688),Right(1755),Right(1765),Down(1772),Down(1829),Down(1852),Right(1904),Down(1952),Down(1980),Right(2025),Right(2037),Right(2077),Down(2087),Right(2118),Down(2122),Right(2127),Right(2131),Right(2142),Right(2180),Right(2200),Right(2212),Right(2267),Down(2329)

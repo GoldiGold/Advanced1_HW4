@@ -5,6 +5,8 @@
 #include "SolverSearcher.h"
 #include "BestFirstSearch.h"
 #include "AStarCmp.h"
+//#include "BreadthFirstSearch.h"
+//#include "DepthFirstSearch.h"
 //#include "MySerialServer.h"
 //#include "MyTestClientHandler.h"
 //#include "StringReverser.h"
